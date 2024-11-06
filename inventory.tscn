@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dngj86ngnli6e"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_tae6p"]
+[ext_resource type="Texture2D" uid="uid://dcxvu2q6ts3xm" path="res://art/inventory-bg.png" id="2_23d0c"]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_tae6p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(560, 357)
+scale = Vector2(0.468478, 0.468478)
+texture = ExtResource("2_23d0c")
