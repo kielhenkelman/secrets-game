@@ -2,21 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://druodd57anbtb" path="res://art/room-1.png" id="1_rp4jr"]
 [ext_resource type="Texture2D" uid="uid://4myyu6kql05s" path="res://art/table-1.png" id="2_4dkum"]
-[ext_resource type="Texture2D" uid="uid://cc2fyip0l2vke" path="res://art/key-1.png" id="3_s5d41"]
+[ext_resource type="PackedScene" uid="uid://8c472lcwlxde" path="res://clickable_item.tscn" id="3_nbr4c"]
 
 [node name="Room-1" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_rp4jr")
 
 [node name="Table" type="Sprite2D" parent="."]
-position = Vector2(528, 410)
+position = Vector2(217, 420)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_4dkum")
 
-[node name="Key" type="Sprite2D" parent="."]
-position = Vector2(531, 349)
-scale = Vector2(0.0641536, 0.0641535)
-texture = ExtResource("3_s5d41")
+[node name="Key" parent="." instance=ExtResource("3_nbr4c")]
+position = Vector2(-157, 97)

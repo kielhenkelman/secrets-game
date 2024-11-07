@@ -1,7 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=4 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="PackedScene" uid="uid://cbvep3v1haxsh" path="res://room_1.tscn" id="1_1d86y"]
+[ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
+[ext_resource type="PackedScene" uid="uid://dngj86ngnli6e" path="res://hud.tscn" id="2_6js6j"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_kyrq5")
 
 [node name="Room-1" parent="." instance=ExtResource("1_1d86y")]
+
+[node name="HUD" parent="." instance=ExtResource("2_6js6j")]
+
+[node name="AddButton" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 49.0
+offset_right = 223.0
+offset_bottom = 80.0
+text = "Add"
+
+[node name="ItemName" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 66.0
+offset_top = 37.0
+offset_right = 166.0
+offset_bottom = 87.0
+placeholder_text = "test"
+
+[connection signal="pressed" from="AddButton" to="." method="_on_add_button_pressed"]
