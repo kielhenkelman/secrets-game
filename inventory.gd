@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func render_items() -> void:
 	var pos_y = -150
-	for item in GameState.inventory:
+	for item in GameState.INVENTORY:
 		var item_label = $ItemTemplate.duplicate()
 		item_label.position = Vector2(-200, pos_y)
 		item_label.text = item
@@ -17,7 +17,7 @@ func render_items() -> void:
 		
 		
 func add_item(item_name: String) -> void:
-	GameState.inventory.append(item_name)
+	GameState.INVENTORY.append(item_name)
 	render_items()
 	
 func _process(delta: float) -> void:

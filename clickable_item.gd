@@ -1,32 +1,28 @@
 extends Area2D
 
-signal item_grabbed
+class_name ClickableItem
 
 @export var context_button: PackedScene
 
-var counter = 0
+var clickable: bool = true
+var item_name: String
+var can_grab: bool
+var inspect_text: String
 
-var context_events = [
-	{"label": "inspect", "action": inspect_action}
-]
+var interactions = []
 
-func drop_action() -> void:
-	print("drop() action")
 	
-func grab_action() -> void:
+func grab_action(_self) -> void:
 	print("grab() called")
-	GameState.inventory.append("key")
+	GameState.INVENTORY.append(item_name)
 	self.visible = false
 	
-func inspect_action() -> void:
+func inspect_action(_self) -> void:
 	print("inspect() called")
 	
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$ContextMenu.visible = false
-	$Debug.text = "Count: " + str(counter)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -38,7 +34,7 @@ func create_button(label: String, action: Callable) -> Button:
 #
 func click_menu_item(action: Callable):
 	var inner = func inner():
-		action.call()
+		action.call(self)
 		$ContextMenu.visible = false
 	return inner
 		
@@ -47,13 +43,18 @@ func draw_context_menu():
 		$ContextMenu.remove_child(n)
 		n.queue_free()
 	
-	$ContextMenu.add_child(create_button("grab", grab_action))
+	if can_grab:
+		$ContextMenu.add_child(create_button("grab", grab_action))
 	
-	for event in context_events:
-		$ContextMenu.add_child(create_button(event["label"], event["action"]))
+	for i in interactions:
+		if i['SHOW_IF'].call():
+			$ContextMenu.add_child(create_button(i['LABEL'], i['RESULT']))
+		
+	$ContextMenu.add_child(create_button("inspect", inspect_action))
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and clickable:
+		print("pressed: " + item_name)
 		draw_context_menu()
 		
 		var mouse_position = get_global_mouse_position()
@@ -66,11 +67,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		$ContextMenu.visible = false
 
-	
-func my_function():
-	$Debug.text = "my_function()"
+func set_texture(texture: Texture2D):
+	$Sprite2D.texture = texture
 
-
-func _on_button_pressed() -> void:
-	print("pressed")
-	pass # Replace with function body.
+func set_item_scale(sprite: Vector2, shape: Vector2):
+	$Sprite2D.set_scale(sprite)
+	$CollisionShape2D.set_scale(shape)

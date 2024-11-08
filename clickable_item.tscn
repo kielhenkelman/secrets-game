@@ -1,23 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://8c472lcwlxde"]
 
-[ext_resource type="Texture2D" uid="uid://cc2fyip0l2vke" path="res://art/key-1.png" id="1_kht30"]
 [ext_resource type="PackedScene" uid="uid://c5g81jieefjrc" path="res://menu_button.tscn" id="2_m4wrx"]
 [ext_resource type="Script" path="res://clickable_item.gd" id="2_x6qmg"]
+[ext_resource type="Texture2D" uid="uid://d022lkperdkgm" path="res://art/placeholder.png" id="3_we2sr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwdex"]
-size = Vector2(41, 33)
+size = Vector2(99.5, 101)
 
 [node name="ClickableItem" type="Area2D"]
 script = ExtResource("2_x6qmg")
 context_button = ExtResource("2_m4wrx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(375, 264)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_kht30")
+texture = ExtResource("3_we2sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(374.5, 263.5)
+position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_jwdex")
 
 [node name="Debug" type="Label" parent="."]
@@ -30,6 +28,7 @@ text = "Empty
 "
 
 [node name="ContextMenu" type="VBoxContainer" parent="."]
+z_index = 5
 offset_left = 330.0
 offset_top = 263.0
 offset_right = 408.0

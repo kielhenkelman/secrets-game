@@ -12,7 +12,6 @@ script = ExtResource("1_kyrq5")
 [node name="HUD" parent="." instance=ExtResource("2_6js6j")]
 
 [node name="AddButton" type="Button" parent="."]
-visible = false
 offset_left = 184.0
 offset_top = 49.0
 offset_right = 223.0
@@ -20,7 +19,6 @@ offset_bottom = 80.0
 text = "Add"
 
 [node name="ItemName" type="TextEdit" parent="."]
-visible = false
 custom_minimum_size = Vector2(100, 50)
 offset_left = 66.0
 offset_top = 37.0
