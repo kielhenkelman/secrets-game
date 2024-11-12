@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d022lkperdkgm" path="res://art/placeholder.png" id="3_we2sr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwdex"]
-size = Vector2(99.5, 101)
+size = Vector2(100, 100)
 
 [node name="ClickableItem" type="Area2D"]
 script = ExtResource("2_x6qmg")
@@ -15,7 +15,6 @@ context_button = ExtResource("2_m4wrx")
 texture = ExtResource("3_we2sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_jwdex")
 
 [node name="Debug" type="Label" parent="."]
@@ -35,3 +34,5 @@ offset_right = 408.0
 offset_bottom = 323.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,16 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dngj86ngnli6e"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_hru87"]
-[ext_resource type="Texture2D" uid="uid://dkvrxmui8l72h" path="res://art/inventory-2.PNG" id="1_ymbwf"]
+[ext_resource type="Texture2D" uid="uid://be1llnmenvx78" path="res://art/inventory.PNG" id="2_hued1"]
 [ext_resource type="Script" path="res://inventory.gd" id="2_p4vd1"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hru87")
 
 [node name="Inventory" type="Sprite2D" parent="."]
-position = Vector2(560, 357)
+position = Vector2(758, 300)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_ymbwf")
+texture = ExtResource("2_hued1")
 script = ExtResource("2_p4vd1")
 
 [node name="ItemLabel" type="Label" parent="Inventory"]
@@ -31,10 +31,10 @@ theme_override_font_sizes/font_size = 22
 text = "Item 1"
 
 [node name="Button" type="Button" parent="."]
-offset_left = 625.0
-offset_top = 29.0
-offset_right = 754.0
-offset_bottom = 60.0
+offset_left = 829.0
+offset_top = 33.0
+offset_right = 958.0
+offset_bottom = 64.0
 text = "Inventory"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

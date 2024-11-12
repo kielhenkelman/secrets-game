@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://r1o6eh6rfvg"]
+
+[ext_resource type="Script" path="res://scenes/rooms/gallery.gd" id="1_u2m8w"]
+[ext_resource type="Texture2D" uid="uid://37pprmlejedm" path="res://art/rooms/gallery.png" id="2_iv7l5"]
+[ext_resource type="Texture2D" uid="uid://bgllyx3bvyq8g" path="res://art/doors/to_studio.png" id="3_ffsak"]
+[ext_resource type="Texture2D" uid="uid://cwxyar073gdxl" path="res://art/doors/to_garage.png" id="4_5uaxj"]
+
+[node name="Gallery" type="Node2D"]
+script = ExtResource("1_u2m8w")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 800.0
+texture = ExtResource("2_iv7l5")
+
+[node name="ToStudio" type="TextureButton" parent="."]
+offset_left = 744.0
+offset_top = 344.0
+offset_right = 794.0
+offset_bottom = 394.0
+texture_normal = ExtResource("3_ffsak")
+
+[node name="ToGarage" type="TextureButton" parent="."]
+offset_left = 125.0
+offset_top = 345.0
+offset_right = 175.0
+offset_bottom = 395.0
+texture_normal = ExtResource("4_5uaxj")
+
+[connection signal="pressed" from="ToStudio" to="." method="_on_to_studio_pressed"]
+[connection signal="pressed" from="ToGarage" to="." method="_on_to_garage_pressed"]

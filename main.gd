@@ -1,8 +1,23 @@
 extends Node
 
+@export var pop_up_scene: PackedScene
+
+var cursor_shape = load("res://art/idc_arrow.png")
+
+var rooms = [
+	"Gallery",
+	"Studio",
+	"Garage",
+	"Cellar",
+	"Kitchen",
+	"BreakerPanel",
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameState.connect("room_changed", on_room_change)
+	GameState.connect("popup_added", on_popup_added) 
+	Input.set_custom_mouse_cursor(cursor_shape)
 	$HUD/Inventory.visible = false
 
 
@@ -10,7 +25,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_add_button_pressed() -> void:
 	var new_item = $ItemName.get_text()
 	$HUD/Inventory.add_item(new_item)
+
+func on_room_change(room_name):
+	for room in rooms:
+		get_node(room).visible = false
+	get_node(room_name).visible = true
+
+func on_popup_added(text, duration):
+	var pop_up = pop_up_scene.instantiate()
+	pop_up.text_to_show = text
+	pop_up.show_time = duration
+	add_child(pop_up)
+	

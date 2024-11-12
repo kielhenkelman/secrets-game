@@ -22,8 +22,8 @@ ItemData="*res://data/items.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
+window/size/viewport_width=1000
+window/size/viewport_height=800
 window/stretch/mode="canvas_items"
 
 [dotnet]

@@ -11,14 +11,16 @@ var inspect_text: String
 
 var interactions = []
 
-	
+var cursor_default = load("res://art/idc_arrow.png")
+var cursor_help = load("res://art/idc_help.png")
+
+
 func grab_action(_self) -> void:
-	print("grab() called")
 	GameState.INVENTORY.append(item_name)
 	self.visible = false
 	
 func inspect_action(_self) -> void:
-	print("inspect() called")
+	GameState.popup(inspect_text)
 	
 func _ready() -> void:
 	$ContextMenu.visible = false
@@ -73,3 +75,12 @@ func set_texture(texture: Texture2D):
 func set_item_scale(sprite: Vector2, shape: Vector2):
 	$Sprite2D.set_scale(sprite)
 	$CollisionShape2D.set_scale(shape)
+
+
+func _on_mouse_entered() -> void:
+	Input.set_custom_mouse_cursor(cursor_help)
+
+
+func _on_mouse_exited() -> void:
+	Input.set_custom_mouse_cursor(cursor_default)
+	

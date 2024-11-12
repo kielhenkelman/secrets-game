@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbi2hdlokbj7y"]
+
+[ext_resource type="Script" path="res://scenes/rooms/cellar.gd" id="1_utgoo"]
+[ext_resource type="Texture2D" uid="uid://b24hcuo8uei7c" path="res://art/rooms/cellar.png" id="2_y1cse"]
+[ext_resource type="Texture2D" uid="uid://bgllyx3bvyq8g" path="res://art/doors/to_studio.png" id="3_h0ifl"]
+
+[node name="Cellar" type="Node2D"]
+script = ExtResource("1_utgoo")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1000.0
+offset_bottom = 800.0
+texture = ExtResource("2_y1cse")
+
+[node name="ToStudio" type="TextureButton" parent="."]
+offset_left = 783.0
+offset_top = 331.0
+offset_right = 833.0
+offset_bottom = 381.0
+texture_normal = ExtResource("3_h0ifl")
+
+[connection signal="pressed" from="ToStudio" to="." method="_on_to_studio_pressed"]
