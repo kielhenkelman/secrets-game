@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=11 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
 [ext_resource type="PackedScene" uid="uid://dngj86ngnli6e" path="res://hud.tscn" id="2_6js6j"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cbncwyn5gywf6" path="res://scenes/rooms/kitchen.tscn" id="7_1ll6j"]
 [ext_resource type="PackedScene" uid="uid://dlmy3q0tw8aa4" path="res://popup.tscn" id="8_jjik4"]
 [ext_resource type="PackedScene" uid="uid://bcjkja5m5dm7c" path="res://scenes/rooms/breaker_panel.tscn" id="9_vuhxj"]
+[ext_resource type="PackedScene" uid="uid://ckaodkv3ivsoo" path="res://scenes/rooms/cake_recipe.tscn" id="10_6pjm8"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kyrq5")
@@ -31,4 +32,7 @@ visible = false
 visible = false
 
 [node name="BreakerPanel" parent="." instance=ExtResource("9_vuhxj")]
+visible = false
+
+[node name="CakeRecipe" parent="." instance=ExtResource("10_6pjm8")]
 visible = false

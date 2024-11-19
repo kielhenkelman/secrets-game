@@ -268,4 +268,27 @@ var items = [
 			}
 		]
 	},
+	{
+		"NAME": "CAKE_RECIPE",
+		"ART": preload("res://art/items/cake_recipe.png"),
+		"SCALE": {
+			"SPRITE": Vector2(1, 1),
+			"COLLISION": Vector2(.5, .5)
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Kitchen",
+			"POSITION": Vector2(400, 650),
+		},
+		"INSPECT_TEXT": "Pigsworth's famous cake recipe.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"SHOW_IF": func():
+					return true,
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room("CakeRecipe"),
+			},
+		]
+	},
 ]

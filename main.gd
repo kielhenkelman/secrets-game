@@ -11,6 +11,7 @@ var rooms = [
 	"Cellar",
 	"Kitchen",
 	"BreakerPanel",
+	"CakeRecipe"
 ]
 
 # Called when the node enters the scene tree for the first time.
