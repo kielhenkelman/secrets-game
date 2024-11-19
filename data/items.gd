@@ -138,8 +138,7 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE_PAN_OF_WATER_AND_CAKE_MIX"),
 				"RESULT": func(item: ClickableItem):
-					item.grab_action(item)
-					GameState.drop_item("EGGS")
+					item.visible = false
 					GameState.drop_item("CAKE_PAN_OF_WATER_AND_CAKE_MIX")
 					GameState.grab_item("CAKE_PAN_OF_INGREDIENTS"),
 			}
@@ -164,8 +163,7 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE_PAN_OF_WATER"),
 				"RESULT": func(item: ClickableItem):
-					item.grab_action(item)
-					GameState.drop_item("INSTANT_CAKE_MIX")
+					item.visible = false
 					GameState.drop_item("CAKE_PAN_OF_WATER")
 					GameState.grab_item("CAKE_PAN_OF_WATER_AND_CAKE_MIX"),
 			}
