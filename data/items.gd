@@ -124,7 +124,7 @@ var items = [
 		"ART": preload("res://art/items/eggs.png"),
 		"SCALE": {
 			"SPRITE": Vector2(1, 1),
-			"COLLISION": Vector2(.5, .5)
+			"COLLISION": Vector2(.5, .25)
 		},
 		"CAN_GRAB": false,
 		"SPAWN": {
@@ -189,7 +189,7 @@ var items = [
 		"ART": preload("res://art/items/sink.png"),
 		"SCALE": {
 			"SPRITE": Vector2(1, 1),
-			"COLLISION": Vector2(.5, .5)
+			"COLLISION": Vector2(.5, .25)
 		},
 		"CAN_GRAB": false,
 		"SPAWN": {
@@ -233,7 +233,7 @@ var items = [
 		"ART": preload("res://art/items/oven.png"),
 		"SCALE": {
 			"SPRITE": Vector2(1, 1),
-			"COLLISION": Vector2(.5, .5)
+			"COLLISION": Vector2(.5, .25)
 		},
 		"CAN_GRAB": false,
 		"SPAWN": {
