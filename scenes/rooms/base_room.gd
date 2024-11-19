@@ -24,7 +24,7 @@ func create_item(data):
 func spawn_items(room_name: String) -> Dictionary:
 	var items_dict = {}
 	for item in ItemData.items:
-		if item['SPAWN']['ROOM'] == room_name:
+		if 'SPAWN' in item && item['SPAWN']['ROOM'] == room_name:
 			var new_item = create_item(item)
 			items_dict[item['NAME']] = new_item
 			add_child(new_item)

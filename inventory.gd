@@ -6,6 +6,10 @@ func _ready() -> void:
 	render_items()
 
 func render_items() -> void:
+	for node in get_children():
+		if node != $ItemTemplate:
+			remove_child(node)
+	
 	var pos_y = -150
 	for item in GameState.INVENTORY:
 		var item_label = $ItemTemplate.duplicate()
