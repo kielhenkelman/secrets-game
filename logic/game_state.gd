@@ -18,6 +18,10 @@ var rooms = [
 	"Kitchen"
 ]
 
+var oven = {
+	start_time = -1
+}
+
 var current_room = "Gallery"
 
 func change_room(room_name):
@@ -42,3 +46,8 @@ func drop_item(item_name) -> void:
 func has_item(item_name) -> bool:
 	return INVENTORY.has(item_name)
 	
+func start_oven() -> void:
+	oven.start_time = Time.get_ticks_msec()
+
+func stop_oven() -> void:
+	oven.start_time = -1;
