@@ -7,13 +7,21 @@ var item_template = preload("res://clickable_item.tscn")
 func create_item(data):
 	var new_item = item_template.instantiate()
 	new_item.item_name = data['NAME']
-	new_item.can_grab = data['CAN_GRAB']
-	new_item.interactions = data['INTERACTIONS']
-	new_item.inspect_text = data['INSPECT_TEXT']
 	
-	if data['TEXTURE']:
+	if 'INSPECT_TEXT' in data:
+		new_item.inspect_text = data['INSPECT_TEXT']
+	
+	if 'CAN_GRAB' in data:
+		new_item.can_grab = data['CAN_GRAB']
+	
+	if 'INTERACTIONS' in data:	
+		new_item.interactions = data['INTERACTIONS']
+
+	if 'TEXTURE' in data:
 		new_item.hitbox_texture = data['TEXTURE']['HITBOX']
-		new_item.hidden_texture = data['TEXTURE']['HIDDEN']
+		
+		if 'HIDDEN' in data['TEXTURE']:
+			new_item.hidden_texture = data['TEXTURE']['HIDDEN']
 	
 	if 'HIDDEN' in data['SPAWN']:
 		new_item.hide_item()

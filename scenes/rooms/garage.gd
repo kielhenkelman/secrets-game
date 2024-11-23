@@ -15,7 +15,3 @@ func _process(delta: float) -> void:
 
 func on_flag_updated(flag: String, value: Variant):
 	pass
-
-
-func _on_to_gallery_pressed() -> void:
-	GameState.change_room("Gallery")
