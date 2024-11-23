@@ -22,6 +22,9 @@ func create_item(data):
 		
 		if 'HIDDEN' in data['TEXTURE']:
 			new_item.hidden_texture = data['TEXTURE']['HIDDEN']
+		
+		if 'GLOW' in data['TEXTURE']:
+			new_item.glow_texture = data['TEXTURE']['GLOW']
 	
 	if 'HIDDEN' in data['SPAWN']:
 		new_item.hide_item()

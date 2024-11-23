@@ -18,6 +18,7 @@ var cursor_help = load("res://art/idc_help.png")
 var default_texture = load("res://art/empty_placeholder.png")
 var hitbox_texture: Resource
 var hidden_texture: Resource
+var glow_texture: Resource
 
 func hide_item() -> void:
 	clickable = false
@@ -103,9 +104,12 @@ func set_texture(texture: Texture2D):
 func _on_mouse_entered() -> void:
 	if clickable:
 		Input.set_custom_mouse_cursor(cursor_help)
+		$Glow.texture = glow_texture
 	else:
 		Input.set_custom_mouse_cursor(cursor_default)
+		$Glow.texture = default_texture
 		
 func _on_mouse_exited() -> void:
 	Input.set_custom_mouse_cursor(cursor_default)
+	$Glow.texture = default_texture
 	
