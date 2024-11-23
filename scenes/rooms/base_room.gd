@@ -8,16 +8,15 @@ func create_item(data):
 	var new_item = item_template.instantiate()
 	new_item.item_name = data['NAME']
 	new_item.can_grab = data['CAN_GRAB']
-	new_item.set_texture(data['ART'])
-	new_item.position = data['SPAWN']['POSITION']
 	new_item.interactions = data['INTERACTIONS']
 	new_item.inspect_text = data['INSPECT_TEXT']
 	
-	var item_scale = data['SCALE']
-	new_item.set_item_scale(item_scale['SPRITE'], item_scale['COLLISION'])
+	if data['TEXTURE']:
+		new_item.hitbox_texture = data['TEXTURE']['HITBOX']
+		new_item.hidden_texture = data['TEXTURE']['HIDDEN']
 	
 	if 'HIDDEN' in data['SPAWN']:
-		new_item.visible = false
+		new_item.hide_item()
 	
 	return new_item
 
