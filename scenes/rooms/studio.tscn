@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cphink22g4o52"]
+[gd_scene load_steps=3 format=3 uid="uid://cphink22g4o52"]
 
 [ext_resource type="Script" path="res://scenes/rooms/studio.gd" id="1_uxnmh"]
-[ext_resource type="Texture2D" uid="uid://gtashni0qkf7" path="res://art/rooms/studio.png" id="2_5fx4t"]
-[ext_resource type="Texture2D" uid="uid://b6tyscnhi2h56" path="res://art/doors/to_gallery.png" id="3_xj6xc"]
-[ext_resource type="Texture2D" uid="uid://34hk23kea33e" path="res://art/doors/to_cellar.png" id="4_jpunm"]
-[ext_resource type="Texture2D" uid="uid://c2y8so348ph7t" path="res://art/doors/to_kitchen.png" id="5_wpkej"]
+[ext_resource type="Texture2D" uid="uid://c0ualgxts73g" path="res://art/room_art/studio.png" id="2_kpajr"]
 
 [node name="Studio" type="Node2D"]
 script = ExtResource("1_uxnmh")
@@ -12,29 +9,4 @@ script = ExtResource("1_uxnmh")
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1000.0
 offset_bottom = 800.0
-texture = ExtResource("2_5fx4t")
-
-[node name="ToGallery" type="TextureButton" parent="."]
-offset_left = 495.0
-offset_top = 707.0
-offset_right = 545.0
-offset_bottom = 757.0
-texture_normal = ExtResource("3_xj6xc")
-
-[node name="ToCellar" type="TextureButton" parent="."]
-offset_left = 97.0
-offset_top = 587.0
-offset_right = 147.0
-offset_bottom = 637.0
-texture_normal = ExtResource("4_jpunm")
-
-[node name="ToKitchen" type="TextureButton" parent="."]
-offset_left = 572.0
-offset_top = 120.0
-offset_right = 612.0
-offset_bottom = 160.0
-texture_normal = ExtResource("5_wpkej")
-
-[connection signal="pressed" from="ToGallery" to="." method="_on_to_gallery_pressed"]
-[connection signal="pressed" from="ToCellar" to="." method="_on_to_cellar_pressed"]
-[connection signal="pressed" from="ToKitchen" to="." method="_on_to_kitchen_pressed"]
+texture = ExtResource("2_kpajr")
