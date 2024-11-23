@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm27vno12g1l8"
-path="res://.godot/imported/cake_mix.png-cd0c475c93f0796728e869c399d85cf2.ctex"
+uid="uid://c2cixgptnuj8g"
+path="res://.godot/imported/bucket.png-64c973032f5a872ffe8ffa363a4ed52b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/inventory_icons/cake_mix.png"
-dest_files=["res://.godot/imported/cake_mix.png-cd0c475c93f0796728e869c399d85cf2.ctex"]
+source_file="res://art/inventory_icons/bucket.png"
+dest_files=["res://.godot/imported/bucket.png-64c973032f5a872ffe8ffa363a4ed52b.ctex"]
 
 [params]
 
