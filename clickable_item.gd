@@ -75,11 +75,12 @@ func draw_context_menu():
 	if can_grab:
 		$ContextMenu.add_child(create_button("grab", grab_action))
 	
-	for i in interactions:
-		if i['SHOW_IF'].call():
-			$ContextMenu.add_child(create_button(i['LABEL'], i['RESULT']))
-		
-	$ContextMenu.add_child(create_button("inspect", inspect_action))
+	for item in interactions:
+		if 'SHOW_IF' not in item or item['SHOW_IF'].call():
+			$ContextMenu.add_child(create_button(item['LABEL'], item['RESULT']))
+	
+	if inspect_text:
+		$ContextMenu.add_child(create_button("inspect", inspect_action))
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("interact") and clickable:

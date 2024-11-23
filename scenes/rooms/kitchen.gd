@@ -16,8 +16,3 @@ func _process(delta: float) -> void:
 
 func on_flag_updated(flag: String, value: Variant):
 	pass
-
-
-func _on_to_studio_pressed() -> void:
-	print("kitchen._on_to_studio_pressed()")
-	GameState.change_room("Studio")
