@@ -721,6 +721,25 @@ var items = [
 			"ICON": preload("res://art/inventory_icons/treasure.png")
 		}
 	},
+	{
+		"NAME": "DIARY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/diary.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/diary_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Bedroom"
+		},
+		"INSPECT_TEXT": "Looks like a diary.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"RESULT": func(item: ClickableItem):
+					GameState.popup('"Arr matey. There be buried treasure under a conspicuous patch of dirt on the left side of the Conservatory, arr."', 10),
+			},
+		]
+	},
 	
 	## DOORS ##
 	{
