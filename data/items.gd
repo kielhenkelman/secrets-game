@@ -11,6 +11,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/cellar/bucket_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/bucket.png")
 		},
+		"SIZE": "1x2",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Cellar"
@@ -26,6 +27,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/cake_tin_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/cake_tin.png")
 		},
+		"SIZE": "2x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Kitchen",
@@ -63,6 +65,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/eggs_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/eggs.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Kitchen"
@@ -88,6 +91,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/instant_cake_mix_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/instant_cake_mix.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Kitchen",
@@ -107,30 +111,35 @@ var items = [
 	},
 	{
 		"NAME": "CAKE_TIN_OF_WATER",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_water.png")
 		}
 	},
 	{
 		"NAME": "CAKE_TIN_OF_WATER_AND_CAKE_MIX",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_water_and_cake_mix.png")
 		}
 	},
 	{
 		"NAME": "CAKE_TIN_OF_INGREDIENTS",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_ingredients.png")
 		}
 	},
 	{
 		"NAME": "CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake.png")
 		}
 	},
 	{
 		"NAME": "BURNT_CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/burnt_cake.png")
 		}
@@ -175,6 +184,7 @@ var items = [
 	},
 	{
 		"NAME": "AXE",
+		"SIZE": "3x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/studio/axe.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/studio/axe_GONE.png"),
@@ -213,6 +223,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_AXE",
+		"SIZE": "3x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_axe.png")
 		},
@@ -242,6 +253,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_cake.png")
 		},
@@ -270,6 +282,7 @@ var items = [
 	},
 	{
 		"NAME": "EMPTY_BOTTLE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/empty_bottle.png")
 		},
@@ -298,12 +311,14 @@ var items = [
 	},
 	{
 		"NAME": "BOTTLE_OF_REALLY_EXPENSIVE_WINE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/bottle_of_really_expensive_wine.png")
 		},
 	},
 	{
 		"NAME": "HAMMER_AND_CHISEL",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/garage/hammer_and_chisel.png"),
 			"GONE": preload("res://art/item_art_overlays/garage/hammer_and_chisel_GONE.png"),
@@ -319,6 +334,7 @@ var items = [
 	},
 	{
 		"NAME": "EMBEDDED_AMETHYST",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/studio/embedded_amethyst.png"),
 			"GONE": preload("res://art/item_art_overlays/studio/embedded_amethyst_GONE.png"),

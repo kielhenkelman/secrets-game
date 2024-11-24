@@ -1,13 +1,15 @@
 extends Node
 
+var _inventory = load("res://scenes/hud/inventory.gd")
+
 signal flag_updated(flag, value)
-signal item_grabbed(item_name)
-signal item_dropped(item_name)
+signal item_grabbed(item_id)
+signal item_dropped(item_id)
 signal room_changed(room_id)
 signal popup_added(text, duration)
 
+var ITEM_DATA = {}
 var FLAGS = {}
-var INVENTORY = []
 
 var rooms = [
 	"Gallery",
@@ -24,6 +26,16 @@ var oven = {
 
 var current_room = "Gallery"
 
+func _ready():
+	load_data()
+	
+
+func load_data():
+	for item in ItemData.items:
+		var game_item = GameItem.new()
+		game_item.load_json(item)
+		ITEM_DATA[game_item.item_id] = game_item
+	
 func change_room(room_name):
 	room_changed.emit(room_name)
 	current_room = room_name
@@ -35,16 +47,17 @@ func set_flag(flag: String, value := true) -> void:
 	flag_updated.emit(flag, value)
 	FLAGS[flag] = value
 
-func grab_item(item_name) -> void:
-	item_grabbed.emit(item_name)
-	INVENTORY.append(item_name)
+func grab_item(item_id) -> void:
+	if _inventory.can_fit_item(item_id):
+		item_grabbed.emit(item_id)
+	else:
+		print("cant fit")
 	
-func drop_item(item_name) -> void:
-	item_dropped.emit(item_name)
-	INVENTORY.erase(item_name)
+func drop_item(item_id) -> void:
+	item_dropped.emit(item_id)
 
-func has_item(item_name) -> bool:
-	return INVENTORY.has(item_name)
+func has_item(item_id) -> bool:
+	return _inventory.has_item(item_id)
 	
 func start_oven() -> void:
 	oven.start_time = Time.get_ticks_msec()
