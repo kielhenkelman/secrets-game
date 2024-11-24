@@ -306,7 +306,7 @@ var items = [
 		"NAME": "HAMMER_AND_CHISEL",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/garage/hammer_and_chisel.png"),
-			"GONE": preload("res://art/item_art_overlays/garage/hammer_and_chisel_GONE.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/hammer_and_chisel_GONE.png"),
 			"GLOW": preload("res://art/item_art_overlays/garage/hammer_and_chisel_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/hammer_and_chisel.png")
 		},
@@ -321,7 +321,7 @@ var items = [
 		"NAME": "EMBEDDED_AMETHYST",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/studio/embedded_amethyst.png"),
-			"GONE": preload("res://art/item_art_overlays/studio/embedded_amethyst_GONE.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/studio/embedded_amethyst_GONE.png"),
 			"GLOW": preload("res://art/item_art_overlays/studio/embedded_amethyst_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/embedded_amethyst.png")
 		},
@@ -338,6 +338,30 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					item.hide_item()
 					GameState.grab_item("EMBEDDED_AMETHYST"),
+			}
+		]
+	},
+	{
+		"NAME": "EMBEDDED_GARNET",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/embedded_garnet.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/bedroom/embedded_garnet_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/embedded_garnet_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/embedded_garnet.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Bedroom"
+		},
+		"INSPECT_TEXT": "A beautiful garnet gemstone.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Hammer and Chisel",
+				"SHOW_IF": func():
+					return GameState.has_item("HAMMER_AND_CHISEL"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("EMBEDDED_GARNET"),
 			}
 		]
 	},
