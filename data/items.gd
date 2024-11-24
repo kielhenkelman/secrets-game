@@ -341,6 +341,128 @@ var items = [
 			}
 		]
 	},
+	{
+		"NAME": "GRAND_PIANO",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/studio/grand_piano.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/studio/grand_piano_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/studio/grand_piano_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/grand_piano.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Studio",
+		},
+		"INSPECT_TEXT": "A grand piano. Somehow I think I can carry this.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "SILVER_CANE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/gallery/silver_cane.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/gallery/silver_cane_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/gallery/silver_cane_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/silver_cane.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Gallery",
+		},
+		"INSPECT_TEXT": "A silver walking cane.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "MULTITOOL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/multitool.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/multitool_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/multitool_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/multitool.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage",
+		},
+		"INSPECT_TEXT": "A multitool. More pointy edges than I can count.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "DISHWASHER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/dishwasher.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/dishwasher_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Kitchen",
+		},
+		"INSPECT_TEXT": "A dishwasher. I wonder what's inside?",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Open",
+				"RESULT": func(item: ClickableItem):
+					GameState.popup("It's jammed shut. I'll need something to help me pry it open."),
+			},
+			{
+				"LABEL": "Use Multitool",
+				"SHOW_IF": func():
+					return GameState.has_item("MULTITOOL"),
+				"RESULT": func(item: ClickableItem):
+					item.clickable = false
+					GameState.grab_item("SILVER_PLATES"),
+			}
+		]
+	},
+	{
+		"NAME": "SILVER_PLATES",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/silver_plates.png")
+		},
+	},
+	{
+		"NAME": "RUBBER_GRABBER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/rubber_grabber.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/kitchen/rubber_grabber_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/rubber_grabber_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/rubber_grabber.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "A grabber conveniently made of rubber.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "OPAL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/cellar/opal.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/cellar/opal_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/cellar/opal_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/opal.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Cellar"
+		},
+		"INSPECT_TEXT": "A beautiful opal gemstone.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Reach",
+				"RESULT": func(item: ClickableItem):
+					GameState.popup("It's behind an electrified grate. There's no way I'm getting it with my bare hands."),
+			},
+			{
+				"LABEL": "Use Rubber Grabber",
+				"SHOW_IF": func():
+					return GameState.has_item("RUBBER_GRABBER"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("OPAL"),
+			}
+		]
+	},
 	
 	## DOORS ##
 	{
