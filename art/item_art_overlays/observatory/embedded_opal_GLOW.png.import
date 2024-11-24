@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cppdl6x4q2lye"
-path="res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"
+uid="uid://bv7my2r0r0io2"
+path="res://.godot/imported/embedded_opal_GLOW.png-84acad0ffed0cf74f2cc3c04a4afbf3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/garage/multitool_GLOW.png"
-dest_files=["res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"]
+source_file="res://art/item_art_overlays/observatory/embedded_opal_GLOW.png"
+dest_files=["res://.godot/imported/embedded_opal_GLOW.png-84acad0ffed0cf74f2cc3c04a4afbf3a.ctex"]
 
 [params]
 

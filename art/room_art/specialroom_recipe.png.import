@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cppdl6x4q2lye"
-path="res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"
+uid="uid://c6yt0jx8h6kvv"
+path="res://.godot/imported/specialroom_recipe.png-653a4e5e291479b2bbe00da49c777c5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/garage/multitool_GLOW.png"
-dest_files=["res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"]
+source_file="res://art/room_art/specialroom_recipe.png"
+dest_files=["res://.godot/imported/specialroom_recipe.png-653a4e5e291479b2bbe00da49c777c5f.ctex"]
 
 [params]
 

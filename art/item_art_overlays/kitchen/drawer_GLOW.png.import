@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cppdl6x4q2lye"
-path="res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"
+uid="uid://w5nekwexqiku"
+path="res://.godot/imported/drawer_GLOW.png-302b4656c30cabdefb567994dca9eb6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/garage/multitool_GLOW.png"
-dest_files=["res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"]
+source_file="res://art/item_art_overlays/kitchen/drawer_GLOW.png"
+dest_files=["res://.godot/imported/drawer_GLOW.png-302b4656c30cabdefb567994dca9eb6f.ctex"]
 
 [params]
 
