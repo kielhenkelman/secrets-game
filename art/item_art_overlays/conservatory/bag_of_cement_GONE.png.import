@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8fg055u1raxx"
-path="res://.godot/imported/office_door.png-bad15ca25769424d2c5ea46329e334d6.ctex"
+uid="uid://dfps7cih0ji3o"
+path="res://.godot/imported/bag_of_cement_GONE.png-15ecec8dc79857994dffd6af68cacbb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/conservatory/office_door.png"
-dest_files=["res://.godot/imported/office_door.png-bad15ca25769424d2c5ea46329e334d6.ctex"]
+source_file="res://art/item_art_overlays/conservatory/bag_of_cement_GONE.png"
+dest_files=["res://.godot/imported/bag_of_cement_GONE.png-15ecec8dc79857994dffd6af68cacbb1.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cthofnfwr7gjb"
-path="res://.godot/imported/bedroom_door_GLOW.png-4c285eb92803d2cecfa2bb705c04f77e.ctex"
+uid="uid://c41a8k2cdk4vi"
+path="res://.godot/imported/specialroom_note.png-b5a543e5a8792286fba54e60c3855092.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/conservatory/bedroom_door_GLOW.png"
-dest_files=["res://.godot/imported/bedroom_door_GLOW.png-4c285eb92803d2cecfa2bb705c04f77e.ctex"]
+source_file="res://art/room_art/specialroom_note.png"
+dest_files=["res://.godot/imported/specialroom_note.png-b5a543e5a8792286fba54e60c3855092.ctex"]
 
 [params]
 
