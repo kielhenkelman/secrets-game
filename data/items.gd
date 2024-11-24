@@ -569,6 +569,85 @@ var items = [
 			}
 		]
 	},
+	{
+		"NAME": "KNIFE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/gallery/knife.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/gallery/knife_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/gallery/knife_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/knife.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Gallery"
+		},
+		"INSPECT_TEXT": "Pointy and good for stabbing.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "TURQUOISE_PAINTED_KNIFE",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/turquoise_painted_knife.png")
+		}
+	},
+	{
+		"NAME": "TROUGH_OF_TURQUOISE_PAINT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/trough_of_turquoise_paint.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/trough_of_turquoise_paint_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "A trough of turquoise paint.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Dip Knife",
+				"SHOW_IF": func():
+					return GameState.has_item("KNIFE"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("KNIFE")
+					GameState.grab_item("TURQUOISE_PAINTED_KNIFE"),
+			}
+		]
+	},
+	{
+		"NAME": "GOLDEN_KNIFE",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/golden_knife.png")
+		}
+	},
+	{
+		"NAME": "KNIFE_PAINTING",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/gallery/knife_painting.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/gallery/knife_painting_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/gallery/knife_painting.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Gallery",
+		},
+		"INSPECT_TEXT": "A painting of a knife, for some reason.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Knife",
+				"SHOW_IF": func():
+					return GameState.has_item("KNIFE"),
+				"RESULT": func(item: ClickableItem):
+					GameState.popup('The painting is impervious to this incorrectly-colored knife.'),
+			},
+			{
+				"LABEL": "Use Turquoise Painted Knife",
+				"SHOW_IF": func():
+					return GameState.has_item("TURQUOISE_PAINTED_KNIFE"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("GOLDEN_KNIFE"),
+			}
+		]
+	},
 	
 	## DOORS ##
 	{
