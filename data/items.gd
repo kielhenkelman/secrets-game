@@ -329,7 +329,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Studio"
 		},
-		"INSPECT_TEXT": "A beautiful amethyst gem.",
+		"INSPECT_TEXT": "A beautiful amethyst gemstone embedded in the table.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Use Hammer and Chisel",
@@ -353,7 +353,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Bedroom"
 		},
-		"INSPECT_TEXT": "A beautiful garnet gemstone.",
+		"INSPECT_TEXT": "A beautiful garnet gemstone embedded in the desk.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Use Hammer and Chisel",
@@ -362,6 +362,30 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					item.hide_item()
 					GameState.grab_item("EMBEDDED_GARNET"),
+			}
+		]
+	},
+	{
+		"NAME": "EMBEDDED_SAPPHIRE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/embedded_sapphire.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/office/embedded_sapphire_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/embedded_sapphire_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/embedded_sapphire.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Office"
+		},
+		"INSPECT_TEXT": "A beautiful sapphire gemstone embedded in the desk.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Hammer and Chisel",
+				"SHOW_IF": func():
+					return GameState.has_item("HAMMER_AND_CHISEL"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("EMBEDDED_SAPPHIRE"),
 			}
 		]
 	},
