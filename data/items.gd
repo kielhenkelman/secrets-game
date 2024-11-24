@@ -463,6 +463,21 @@ var items = [
 			}
 		]
 	},
+	{
+		"NAME": "LADDER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/ladder.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/ladder_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/ladder_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/ladder.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage"
+		},
+		"INSPECT_TEXT": "A ladder. Remember to take basic safety precautions!",
+		"INTERACTIONS": []
+	},
 	
 	## DOORS ##
 	{
@@ -718,6 +733,41 @@ var items = [
 				"LABEL": "Go to Conservatory",
 				"RESULT": func(item: ClickableItem):
 					GameState.change_room('Conservatory'),
+			}
+		],
+	},
+	{
+		"NAME": "BEDROOM_TO_ATTIC",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/trapdoor_to_attic.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/trapdoor_to_attic_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Bedroom" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Attic",
+				"RESULT": func(item: ClickableItem):
+					if GameState.has_item('LADDER'):
+						GameState.change_room('Attic')
+					else:
+						GameState.popup('I will need something to help me reach that.'),
+			}
+		],
+	},
+	{
+		"NAME": "ATTIC_TO_BEDROOM",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/trapdoor_to_bedroom.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/trapdoor_to_bedroom_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Attic" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Bedroom",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Bedroom'),
 			}
 		],
 	},
