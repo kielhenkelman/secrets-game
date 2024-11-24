@@ -10,6 +10,7 @@ offset_bottom = 40.0
 script = ExtResource("1_nbvim")
 
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 100.0
 offset_right = 520.0

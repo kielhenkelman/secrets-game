@@ -365,6 +365,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/embedded_garnet_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/embedded_garnet.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -389,6 +390,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/studio/grand_piano_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/grand_piano.png")
 		},
+		"SIZE": "3x4",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Studio",
@@ -404,6 +406,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/silver_cane_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/silver_cane.png")
 		},
+		"SIZE": "1x3",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Gallery",
@@ -419,6 +422,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/multitool_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/multitool.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage",
@@ -455,12 +459,14 @@ var items = [
 	},
 	{
 		"NAME": "SILVER_PLATES",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/silver_plates.png")
 		},
 	},
 	{
 		"NAME": "RUBBER_GRABBER",
+		"SIZE": "1x3",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/kitchen/rubber_grabber.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/kitchen/rubber_grabber_GONE.png"),
@@ -482,6 +488,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/cellar/opal_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/opal.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Cellar"
@@ -511,6 +518,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/ladder_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/ladder.png")
 		},
+		"SIZE": "1x4",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -526,6 +534,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/black_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/black_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -541,6 +550,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/studio/yellow_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/yellow_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Studio"
@@ -556,6 +566,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/observatory/white_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/white_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Observatory"
@@ -571,6 +582,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/blue_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/blue_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -586,6 +598,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/abstract_art_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/abstract_art.png")
 		},
+		"SIZE": "2x2",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -617,6 +630,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/knife_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/knife.png")
 		},
+		"SIZE": "2x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Gallery"
@@ -626,6 +640,7 @@ var items = [
 	},
 	{
 		"NAME": "TURQUOISE_PAINTED_KNIFE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/turquoise_painted_knife.png")
 		}
@@ -654,6 +669,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_KNIFE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_knife.png")
 		}
@@ -696,6 +712,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/large_jar_of_saffron_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/large_jar_of_saffron.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Kitchen"
@@ -711,6 +728,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/office/vintage_cigar_box_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/vintage_cigar_box.png")
 		},
+		"SIZE": "1x2",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Office"
@@ -726,6 +744,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/shovel_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/shovel.png")
 		},
+		"SIZE": "3x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -757,6 +776,7 @@ var items = [
 	},
 	{
 		"NAME": "TREASURE",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/treasure.png")
 		}
