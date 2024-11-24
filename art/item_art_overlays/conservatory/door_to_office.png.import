@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8fg055u1raxx"
-path="res://.godot/imported/office_door.png-bad15ca25769424d2c5ea46329e334d6.ctex"
+path="res://.godot/imported/door_to_office.png-c89d80c27dc34f9f61f81f54fce1c54e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/conservatory/office_door.png"
-dest_files=["res://.godot/imported/office_door.png-bad15ca25769424d2c5ea46329e334d6.ctex"]
+source_file="res://art/item_art_overlays/conservatory/door_to_office.png"
+dest_files=["res://.godot/imported/door_to_office.png-c89d80c27dc34f9f61f81f54fce1c54e.ctex"]
 
 [params]
 
