@@ -690,7 +690,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Garage"
 		},
-		"INSPECT_TEXT": "A shovel. May be used for digging or for bludgeoning.",
+		"INSPECT_TEXT": "A shovel. May be used for bludgeoning, or for digging if you're boring like that.",
 		"INTERACTIONS": []
 	},
 	{
