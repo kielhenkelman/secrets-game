@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pas6x61hn703"
-path="res://.godot/imported/barrel_of_wine_GLOW.png-2b8d49bafb0d356a9b388809a0ebe5bd.ctex"
+uid="uid://b305vedyfhurh"
+path="res://.godot/imported/door_to_office_GLOW.png-dfeed8838a11730428249a08e92b5836.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/cellar/barrel_of_wine_GLOW.png"
-dest_files=["res://.godot/imported/barrel_of_wine_GLOW.png-2b8d49bafb0d356a9b388809a0ebe5bd.ctex"]
+source_file="res://art/item_art_overlays/conservatory/door_to_office_GLOW.png"
+dest_files=["res://.godot/imported/door_to_office_GLOW.png-dfeed8838a11730428249a08e92b5836.ctex"]
 
 [params]
 

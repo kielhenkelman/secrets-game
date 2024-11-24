@@ -19,7 +19,3 @@ func on_flag_updated(flag: String, value: Variant):
 		items['VAULT'].clickable = false
 		items['GEM'].visible = true
 		items['GEM'].z_index = 2
-
-
-func _on_to_studio_pressed() -> void:
-	GameState.change_room("Studio")

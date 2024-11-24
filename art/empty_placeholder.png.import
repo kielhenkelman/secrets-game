@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo2u2sqi620bh"
-path="res://.godot/imported/silver_walking_cane.png-f62c422fd732ebae912cc33817eecd0b.ctex"
+uid="uid://bs2m5pms0xuhh"
+path="res://.godot/imported/empty_placeholder.png-b47658f3ac0ddf3f130aa60a1f63ccac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/inventory_icons/silver_walking_cane.png"
-dest_files=["res://.godot/imported/silver_walking_cane.png-f62c422fd732ebae912cc33817eecd0b.ctex"]
+source_file="res://art/empty_placeholder.png"
+dest_files=["res://.godot/imported/empty_placeholder.png-b47658f3ac0ddf3f130aa60a1f63ccac.ctex"]
 
 [params]
 

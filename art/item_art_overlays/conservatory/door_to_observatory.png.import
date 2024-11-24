@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dorhots2swxpm"
-path="res://.godot/imported/observatory_door_GLOW.png-7f69f0bb46b06bcb831cdf94453bb93f.ctex"
+uid="uid://cdbrv1l18a4gi"
+path="res://.godot/imported/door_to_observatory.png-14082f22c28b9f33338770e7cd8addcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/conservatory/observatory_door_GLOW.png"
-dest_files=["res://.godot/imported/observatory_door_GLOW.png-7f69f0bb46b06bcb831cdf94453bb93f.ctex"]
+source_file="res://art/item_art_overlays/conservatory/door_to_observatory.png"
+dest_files=["res://.godot/imported/door_to_observatory.png-14082f22c28b9f33338770e7cd8addcb.ctex"]
 
 [params]
 

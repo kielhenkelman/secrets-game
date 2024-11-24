@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ygxe7nf1tdn"
-path="res://.godot/imported/bottle_of_cheap_wine.png-439b9d0b1a46d811175fbde12b814579.ctex"
+uid="uid://bo2u2sqi620bh"
+path="res://.godot/imported/silver_cane.png-a5c5f228819dd3a2612aa28ee4830efe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/cellar/bottle_of_cheap_wine.png"
-dest_files=["res://.godot/imported/bottle_of_cheap_wine.png-439b9d0b1a46d811175fbde12b814579.ctex"]
+source_file="res://art/inventory_icons/silver_cane.png"
+dest_files=["res://.godot/imported/silver_cane.png-a5c5f228819dd3a2612aa28ee4830efe.ctex"]
 
 [params]
 
