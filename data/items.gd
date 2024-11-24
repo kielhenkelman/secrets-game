@@ -678,6 +678,49 @@ var items = [
 		"INSPECT_TEXT": "A box of vintage cigars.",
 		"INTERACTIONS": []
 	},
+	{
+		"NAME": "SHOVEL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/shovel.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/shovel_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/shovel_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/shovel.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage"
+		},
+		"INSPECT_TEXT": "A shovel. May be used for digging or for bludgeoning.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ODD_PATCH_OF_DIRT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/odd_patch_of_dirt.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/odd_patch_of_dirt_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "An odd patch of dirt. Notably, not even.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Dig with Shovel",
+				"SHOW_IF": func():
+					return GameState.has_item("SHOVEL"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("TREASURE"),
+			},
+		]
+	},
+	{
+		"NAME": "TREASURE",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/treasure.png")
+		}
+	},
 	
 	## DOORS ##
 	{
