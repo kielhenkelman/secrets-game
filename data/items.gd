@@ -478,6 +478,97 @@ var items = [
 		"INSPECT_TEXT": "A ladder. Remember to take basic safety precautions!",
 		"INTERACTIONS": []
 	},
+	{
+		"NAME": "BLACK_PUZZLE_PIECE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/black_puzzle_piece.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/black_puzzle_piece_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/black_puzzle_piece_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/black_puzzle_piece.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage"
+		},
+		"INSPECT_TEXT": "A black puzzle piece",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "YELLOW_PUZZLE_PIECE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/studio/yellow_puzzle_piece.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/studio/yellow_puzzle_piece_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/studio/yellow_puzzle_piece_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/yellow_puzzle_piece.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Studio"
+		},
+		"INSPECT_TEXT": "A yellow puzzle piece",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "WHITE_PUZZLE_PIECE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/white_puzzle_piece.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/observatory/white_puzzle_piece_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/white_puzzle_piece_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/white_puzzle_piece.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A white puzzle piece",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "BLUE_PUZZLE_PIECE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/blue_puzzle_piece.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/bedroom/blue_puzzle_piece_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/blue_puzzle_piece_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/blue_puzzle_piece.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Bedroom"
+		},
+		"INSPECT_TEXT": "A blue puzzle piece",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ABSTRACT_ART",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/abstract_art.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/bedroom/abstract_art_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/abstract_art_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/abstract_art.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Bedroom"
+		},
+		"INSPECT_TEXT": "This painting has some pieces missing, like me.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Add Puzzle Pieces & Take",
+				"SHOW_IF": func():
+					return (GameState.has_item("BLACK_PUZZLE_PIECE") &&
+						GameState.has_item("YELLOW_PUZZLE_PIECE") &&
+						GameState.has_item("WHITE_PUZZLE_PIECE") &&
+						GameState.has_item("BLUE_PUZZLE_PIECE")),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.drop_item("BLACK_PUZZLE_PIECE")
+					GameState.drop_item("YELLOW_PUZZLE_PIECE")
+					GameState.drop_item("WHITE_PUZZLE_PIECE")
+					GameState.drop_item("BLUE_PUZZLE_PIECE")
+					GameState.grab_item("ABSTRACT_ART"),
+			}
+		]
+	},
 	
 	## DOORS ##
 	{
