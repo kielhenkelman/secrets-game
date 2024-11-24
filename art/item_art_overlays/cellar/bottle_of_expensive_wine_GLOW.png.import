@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw6o7phddrjk1"
-path="res://.godot/imported/bottle_of_cheap_wine_GLOW.png-883400c5be6b63116a55f8c0534e8f34.ctex"
+path="res://.godot/imported/bottle_of_expensive_wine_GLOW.png-eea2e0cc2aaa8dc3008cf651a1e589b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/cellar/bottle_of_cheap_wine_GLOW.png"
-dest_files=["res://.godot/imported/bottle_of_cheap_wine_GLOW.png-883400c5be6b63116a55f8c0534e8f34.ctex"]
+source_file="res://art/item_art_overlays/cellar/bottle_of_expensive_wine_GLOW.png"
+dest_files=["res://.godot/imported/bottle_of_expensive_wine_GLOW.png-eea2e0cc2aaa8dc3008cf651a1e589b9.ctex"]
 
 [params]
 

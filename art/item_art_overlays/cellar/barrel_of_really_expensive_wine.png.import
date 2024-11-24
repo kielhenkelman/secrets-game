@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd0i6hopfi33c"
-path="res://.godot/imported/barrel_of_wine.png-77c03930da16226a7ec38095db52eab3.ctex"
+path="res://.godot/imported/barrel_of_really_expensive_wine.png-d5febef39ee07fbb99cea545521e0397.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/cellar/barrel_of_wine.png"
-dest_files=["res://.godot/imported/barrel_of_wine.png-77c03930da16226a7ec38095db52eab3.ctex"]
+source_file="res://art/item_art_overlays/cellar/barrel_of_really_expensive_wine.png"
+dest_files=["res://.godot/imported/barrel_of_really_expensive_wine.png-d5febef39ee07fbb99cea545521e0397.ctex"]
 
 [params]
 
