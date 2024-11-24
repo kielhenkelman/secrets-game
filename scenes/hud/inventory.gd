@@ -7,6 +7,8 @@ extends Control
 @onready var scroll_container = $Background/MarginContainer/VBoxContainer/ScrollContainer
 @onready var grid_container = $Background/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
+var inventory_open = false
+
 static var States = preload("res://scenes/hud/slot.gd").States
 static var col_count = 8
 static var inventory_slots = []
@@ -66,6 +68,9 @@ func stop_holding():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not inventory_open:
+		return
+		
 	if item_held:
 		if Input.is_action_just_pressed("interact"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):

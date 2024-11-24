@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	if $Inventory.visible:
+		$Inventory.inventory_open = false
 		$Inventory.visible = false
 	else:
+		$Inventory.inventory_open = true
 		$Inventory.visible = true
