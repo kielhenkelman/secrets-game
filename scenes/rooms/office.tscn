@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://chm2frgrrmonb"]
+
+[ext_resource type="Texture2D" uid="uid://wy1lyd8bdun5" path="res://art/room_art/office.png" id="1_wx8jw"]
+
+[node name="Office" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_wx8jw")

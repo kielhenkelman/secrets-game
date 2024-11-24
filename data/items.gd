@@ -592,5 +592,133 @@ var items = [
 					GameState.change_room('Studio'),
 			}
 		],
-	}
+	},
+	{
+		"NAME": "STUDIO_TO_OBSERVATORY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/studio/stairs_to_observatory.png"),
+			"GLOW": preload("res://art/item_art_overlays/studio/stairs_to_observatory_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Studio" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Observatory",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Observatory'),
+			}
+		],
+	},
+	{
+		"NAME": "OBSERVATORY_TO_STUDIO",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/stairs_to_studio.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/stairs_to_studio_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Observatory" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Studio",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Studio'),
+			}
+		],
+	},
+	{
+		"NAME": "OBSERVATORY_TO_CONSERVATORY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/door_to_conservatory.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/door_to_conservatory_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Observatory" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Conservatory",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Conservatory'),
+			}
+		],
+	},
+	{
+		"NAME": "CONSERVATORY_TO_OBSERVATORY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/door_to_observatory.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/door_to_observatory_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Conservatory" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Observatory",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Observatory'),
+			}
+		],
+	},
+	{
+		"NAME": "CONSERVATORY_TO_OFFICE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/door_to_office.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/door_to_office_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Conservatory" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Office",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Office'),
+			}
+		],
+	},
+	{
+		"NAME": "CONSERVATORY_TO_BEDROOM",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/door_to_bedroom.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/door_to_bedroom_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Conservatory" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Bedroom",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Bedroom'),
+			}
+		],
+	},
+	{
+		"NAME": "OFFICE_TO_CONSERVATORY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/door_to_conservatory.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/door_to_conservatory_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Office" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Conservatory",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Conservatory'),
+			}
+		],
+	},
+	{
+		"NAME": "BEDROOM_TO_CONSERVATORY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/bedroom/door_to_conservatory.png"),
+			"GLOW": preload("res://art/item_art_overlays/bedroom/door_to_conservatory_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": { "ROOM": "Bedroom" },
+		"INTERACTIONS": [
+			{
+				"LABEL": "Go to Conservatory",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('Conservatory'),
+			}
+		],
+	},
 ]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh73wijeb70db"]
+
+[ext_resource type="Texture2D" uid="uid://hjp2fqtwadji" path="res://art/room_art/bedroom.png" id="1_qsjvp"]
+
+[node name="Bedroom" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_qsjvp")
