@@ -788,6 +788,56 @@ var items = [
 			},
 		]
 	},
+	{
+		"NAME": "RED_BRICK",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/red_brick.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/conservatory/red_brick_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/red_brick_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "This brick seems suspicious.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Check",
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("RUBY"),
+			},
+		]
+	},
+	{
+		"NAME": "RUBY",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/ruby.png")
+		}
+	},
+	{
+		"NAME": "MAGIC_EIGHT_BALL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/magic_eight_ball.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/magic_eight_ball_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Office"
+		},
+		"INSPECT_TEXT": "A Magic 8 Ball.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Look Into",
+				"RESULT": func(item: ClickableItem):
+					var random = Time.get_ticks_msec() % 2
+					if random == 0:
+						GameState.popup('"CONSERVATORY"')
+					else:
+						GameState.popup('"HIGH BRICK"'),
+			},
+		]
+	},
 	
 	## DOORS ##
 	{
