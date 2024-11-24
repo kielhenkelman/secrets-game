@@ -648,6 +648,36 @@ var items = [
 			}
 		]
 	},
+	{
+		"NAME": "LARGE_JAR_OF_SAFFRON",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/large_jar_of_saffron.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/kitchen/large_jar_of_saffron_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/large_jar_of_saffron_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/large_jar_of_saffron.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "A large jar of saffron.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "VINTAGE_CIGAR_BOX",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/vintage_cigar_box.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/office/vintage_cigar_box_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/vintage_cigar_box_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/vintage_cigar_box.png")
+		},
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Office"
+		},
+		"INSPECT_TEXT": "A box of vintage cigars.",
+		"INTERACTIONS": []
+	},
 	
 	## DOORS ##
 	{
