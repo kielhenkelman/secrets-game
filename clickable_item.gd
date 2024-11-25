@@ -19,8 +19,11 @@ func show_item() -> void:
 	$Sprite2D.texture = game_item.default_texture
 
 func grab_action(_self) -> void:
-	GameState.grab_item(game_item.item_id)
-	hide_item()
+	if GameState.can_fit_item(game_item.item_id):
+		GameState.grab_item(game_item.item_id)
+		hide_item()
+	else:
+		GameState.popup("Can't fit " + game_item.item_id)
 	
 func inspect_action(_self) -> void:
 	GameState.popup(game_item.inspect_text)

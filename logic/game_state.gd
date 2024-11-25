@@ -48,16 +48,17 @@ func set_flag(flag: String, value := true) -> void:
 	FLAGS[flag] = value
 
 func grab_item(item_id) -> void:
-	if _inventory.can_fit_item(item_id):
+	if can_fit_item(item_id):
 		item_grabbed.emit(item_id)
-	else:
-		print("cant fit")
 	
 func drop_item(item_id) -> void:
 	item_dropped.emit(item_id)
 
 func has_item(item_id) -> bool:
 	return _inventory.has_item(item_id)
+
+func can_fit_item(item_id):
+	return _inventory.can_fit_item(item_id)
 	
 func start_oven() -> void:
 	oven.start_time = Time.get_ticks_msec()
