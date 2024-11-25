@@ -90,6 +90,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		$ContextMenu.visible = false
+	if event.is_action_pressed("highlight_all"):
+		$Glow.texture = game_item.glow_texture
+	if event.is_action_released("highlight_all"):
+		$Glow.texture = game_item.default_texture
 
 func set_texture(texture: Texture2D):
 	$Sprite2D.texture = texture
@@ -104,4 +108,5 @@ func _on_mouse_entered() -> void:
 		
 func _on_mouse_exited() -> void:
 	Input.set_custom_mouse_cursor(cursor_default)
-	$Glow.texture = game_item.default_texture
+	if not Input.is_action_pressed("highlight_all"):
+		$Glow.texture = game_item.default_texture
