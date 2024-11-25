@@ -77,7 +77,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE_TIN_OF_WATER_AND_CAKE_MIX"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.drop_item("CAKE_TIN_OF_WATER_AND_CAKE_MIX")
 					GameState.grab_item("CAKE_TIN_OF_INGREDIENTS"),
 			}
@@ -103,7 +102,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE_TIN_OF_WATER"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.drop_item("CAKE_TIN_OF_WATER")
 					GameState.grab_item("CAKE_TIN_OF_WATER_AND_CAKE_MIX"),
 			}
@@ -169,6 +167,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.oven.start_time != -1,
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("CAKE"):
+						GameState.popup("Not enough inventory space.")
+						return
+					
 					var time_elapsed = Time.get_ticks_msec() - GameState.oven.start_time
 					if time_elapsed < 20000:
 						GameState.grab_item("CAKE_TIN_OF_INGREDIENTS")
@@ -216,7 +218,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("AXE"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("GOLDEN_AXE"),
 			}
 		]
@@ -246,7 +247,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("GOLDEN_CAKE"),
 			}
 		]
@@ -275,7 +275,6 @@ var items = [
 			{
 				"LABEL": "Empty & Take",
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("EMPTY_BOTTLE"),
 			}			
 		]
@@ -352,7 +351,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("HAMMER_AND_CHISEL"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("EMBEDDED_AMETHYST"),
 			}
 		]
@@ -377,7 +375,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("HAMMER_AND_CHISEL"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("EMBEDDED_GARNET"),
 			}
 		]
@@ -452,6 +449,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("MULTITOOL"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("SILVER_PLATES"):
+						GameState.popup("Not enough inventory space.")
+						return
+					
 					item.clickable = false
 					GameState.grab_item("SILVER_PLATES"),
 			}
@@ -505,7 +506,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("RUBBER_GRABBER"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("OPAL"),
 			}
 		]
@@ -613,7 +613,10 @@ var items = [
 						GameState.has_item("WHITE_PUZZLE_PIECE") &&
 						GameState.has_item("BLUE_PUZZLE_PIECE")),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
+					if not GameState.can_fit_item("ABSTRACT_ART"):
+						GameState.popup("Not enough inventory space.")
+						return
+						
 					GameState.drop_item("BLACK_PUZZLE_PIECE")
 					GameState.drop_item("YELLOW_PUZZLE_PIECE")
 					GameState.drop_item("WHITE_PUZZLE_PIECE")
@@ -699,7 +702,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("TURQUOISE_PAINTED_KNIFE"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("GOLDEN_KNIFE"),
 			}
 		]
@@ -769,7 +771,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("SHOVEL"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("TREASURE"),
 			},
 		]

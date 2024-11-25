@@ -50,6 +50,8 @@ func set_flag(flag: String, value := true) -> void:
 func grab_item(item_id) -> void:
 	if can_fit_item(item_id):
 		item_grabbed.emit(item_id)
+	else:
+		popup("Not enough inventory space.")
 	
 func drop_item(item_id) -> void:
 	item_dropped.emit(item_id)

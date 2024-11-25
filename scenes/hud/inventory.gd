@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
 				pick_up_item(current_slot)
-
+	
 func throw_away_item(inv_item):
 	inv_item.queue_free()
 	inventory_items.erase(inv_item.item_id)
@@ -71,10 +71,7 @@ func pick_up_item(inv_slot):
 	add_child(inv_item)
 	inv_item.global_position = get_global_mouse_position()
 	
-	for part in inv_item.item_parts:
-		var slot_to_check = inv_item.slot_anchor_id + part[0] + part[1] * col_count
-		inventory_slots[slot_to_check].state = States.FREE 
-		inventory_slots[slot_to_check].item_stored = null
+	remove_item_from_grid(inv_item)
 	
 	set_slot_highlights.call_deferred(inv_item.item_parts, current_slot)
 	
@@ -110,11 +107,13 @@ func render_items():
 		place_item_on_grid.call_deferred(inv_item)
 		
 func _on_item_dropped(item_id):
+	var inv_item = inventory_items[item_id]
+	remove_item_from_grid(inv_item)
+	inv_item.queue_free()
 	inventory_items.erase(item_id)
 	
 func _on_item_grabbed(item_id):
 	var game_item: GameItem = GameState.ITEM_DATA[item_id]
-	
 	var inv_item = item_scene.instantiate()
 	inv_item.load_item(game_item)
 	
@@ -152,13 +151,19 @@ static func can_place_item(item_parts, inv_slot) -> bool:
 			return false
 	return true
 
-func add_item_to_grid(inv_item, inv_spot):
+func remove_item_from_grid(inv_item):
 	for part in inv_item.item_parts:
-		var slot_to_check = inv_spot.slot_id + part[0] + part[1] * col_count
+		var slot_to_check = inv_item.slot_anchor_id + part[0] + part[1] * col_count
+		inventory_slots[slot_to_check].state = States.FREE
+		inventory_slots[slot_to_check].item_stored = null
+	
+func add_item_to_grid(inv_item, inv_slot):
+	for part in inv_item.item_parts:
+		var slot_to_check = inv_slot.slot_id + part[0] + part[1] * col_count
 		inventory_slots[slot_to_check].state = States.TAKEN
 		inventory_slots[slot_to_check].item_stored = inv_item
 	
-	inv_item.slot_anchor_id = inv_spot.slot_id
+	inv_item.slot_anchor_id = inv_slot.slot_id
 
 func set_slot_highlights(item_parts, inv_slot):
 	for part in item_parts: 
@@ -182,7 +187,6 @@ func create_slot():
 	inventory_slots.append(new_slot)
 	new_slot.slot_entered.connect(_on_slot_mouse_entered)
 	new_slot.slot_exited.connect(_on_slot_mouse_exited)
-	print(new_slot.global_position)
 	
 func _on_slot_mouse_entered(inv_slot):
 	current_slot = inv_slot
