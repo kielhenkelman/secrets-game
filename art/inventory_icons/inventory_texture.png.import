@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://30u4nl8g1bes"
-path="res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"
+uid="uid://c73w5cgiat0kv"
+path="res://.godot/imported/inventory_texture.png-e52e00b6131d260129bb68b981750d65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/garage/multitool_GLOW.png"
-dest_files=["res://.godot/imported/multitool_GLOW.png-47b752f2a90412dd6636818560be4c75.ctex"]
+source_file="res://art/inventory_icons/inventory_texture.png"
+dest_files=["res://.godot/imported/inventory_texture.png-e52e00b6131d260129bb68b981750d65.ctex"]
 
 [params]
 

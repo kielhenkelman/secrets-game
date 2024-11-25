@@ -4,36 +4,30 @@ class_name ClickableItem
 
 @export var context_button: PackedScene
 
+var game_item: GameItem
 var clickable: bool = true
-
-var item_name: String
-var can_grab: bool
-var inspect_text: String
-
-var interactions = []
 
 var cursor_default = load("res://art/idc_arrow.png")
 var cursor_help = load("res://art/idc_help.png")
 
-var default_texture = load("res://art/empty_placeholder.png")
-var hitbox_texture: Resource
-var hidden_texture: Resource
-var glow_texture: Resource
-
 func hide_item() -> void:
 	clickable = false
-	$Sprite2D.texture = hidden_texture
+	$Sprite2D.texture = game_item.hidden_texture
+	$Glow.texture = game_item.default_texture
 	
 func show_item() -> void:
 	clickable = true
-	$Sprite2D.texture = default_texture
+	$Sprite2D.texture = game_item.default_texture
 
 func grab_action(_self) -> void:
-	GameState.grab_item(item_name)
-	hide_item()
+	if GameState.can_fit_item(game_item.item_id):
+		GameState.grab_item(game_item.item_id)
+		hide_item()
+	else:
+		GameState.popup_inventory_full()
 	
 func inspect_action(_self) -> void:
-	GameState.popup(inspect_text)
+	GameState.popup(game_item.inspect_text)
 
 func create_collision_polygon(collision_texture: Resource):
 	var image = Image.new()
@@ -51,7 +45,7 @@ func create_collision_polygon(collision_texture: Resource):
 
 func _ready() -> void:
 	$ContextMenu.visible = false
-	create_collision_polygon(hitbox_texture)
+	create_collision_polygon(game_item.hitbox_texture)
 
 func _process(delta: float) -> void:
 	pass
@@ -73,19 +67,19 @@ func draw_context_menu():
 		$ContextMenu.remove_child(n)
 		n.queue_free()
 	
-	if can_grab:
+	if game_item.can_grab:
 		$ContextMenu.add_child(create_button("grab", grab_action))
 	
-	for item in interactions:
-		if 'SHOW_IF' not in item or item['SHOW_IF'].call():
-			$ContextMenu.add_child(create_button(item['LABEL'], item['RESULT']))
+	for i in game_item.interactions:
+		if 'SHOW_IF' not in i or i['SHOW_IF'].call():
+			$ContextMenu.add_child(create_button(i['LABEL'], i['RESULT']))
 	
-	if inspect_text:
+	if game_item.inspect_text:
 		$ContextMenu.add_child(create_button("inspect", inspect_action))
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("interact") and clickable:
-		print("pressed: " + item_name)
+		print("pressed: " + game_item.item_id)
 		draw_context_menu()
 		
 		var mouse_position = get_global_mouse_position()
@@ -97,6 +91,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		$ContextMenu.visible = false
+	if event.is_action_pressed("highlight_all") and clickable:
+		$Glow.texture = game_item.glow_texture
+	if event.is_action_released("highlight_all"):
+		$Glow.texture = game_item.default_texture
 
 func set_texture(texture: Texture2D):
 	$Sprite2D.texture = texture
@@ -104,12 +102,12 @@ func set_texture(texture: Texture2D):
 func _on_mouse_entered() -> void:
 	if clickable:
 		Input.set_custom_mouse_cursor(cursor_help)
-		$Glow.texture = glow_texture
+		$Glow.texture = game_item.glow_texture
 	else:
 		Input.set_custom_mouse_cursor(cursor_default)
-		$Glow.texture = default_texture
+		$Glow.texture = game_item.default_texture
 		
 func _on_mouse_exited() -> void:
 	Input.set_custom_mouse_cursor(cursor_default)
-	$Glow.texture = default_texture
-	
+	if not Input.is_action_pressed("highlight_all"):
+		$Glow.texture = game_item.default_texture
