@@ -14,9 +14,9 @@ offset_bottom = 69.0
 text = "Inventory"
 
 [node name="Inventory" parent="." instance=ExtResource("4_d0xk5")]
-offset_left = 696.0
-offset_top = 79.0
-offset_right = 736.0
-offset_bottom = 119.0
+offset_left = 689.0
+offset_top = 45.0
+offset_right = 729.0
+offset_bottom = 85.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
