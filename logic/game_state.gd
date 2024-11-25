@@ -40,6 +40,9 @@ func change_room(room_name):
 	room_changed.emit(room_name)
 	current_room = room_name
 
+func popup_inventory_full():
+	popup("Not enough inventory space.")
+	
 func popup(text: String, duration: float = 3):
 	popup_added.emit(text, duration)
 	
@@ -51,7 +54,7 @@ func grab_item(item_id) -> void:
 	if can_fit_item(item_id):
 		item_grabbed.emit(item_id)
 	else:
-		popup("Not enough inventory space.")
+		popup_inventory_full()
 	
 func drop_item(item_id) -> void:
 	item_dropped.emit(item_id)

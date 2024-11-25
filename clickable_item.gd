@@ -13,6 +13,7 @@ var cursor_help = load("res://art/idc_help.png")
 func hide_item() -> void:
 	clickable = false
 	$Sprite2D.texture = game_item.hidden_texture
+	$Glow.texture = game_item.default_texture
 	
 func show_item() -> void:
 	clickable = true
@@ -23,7 +24,7 @@ func grab_action(_self) -> void:
 		GameState.grab_item(game_item.item_id)
 		hide_item()
 	else:
-		GameState.popup("Can't fit " + game_item.item_id)
+		GameState.popup_inventory_full()
 	
 func inspect_action(_self) -> void:
 	GameState.popup(game_item.inspect_text)
@@ -90,7 +91,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		$ContextMenu.visible = false
-	if event.is_action_pressed("highlight_all"):
+	if event.is_action_pressed("highlight_all") and clickable:
 		$Glow.texture = game_item.glow_texture
 	if event.is_action_released("highlight_all"):
 		$Glow.texture = game_item.default_texture
