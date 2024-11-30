@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv7my2r0r0io2"
-path="res://.godot/imported/embedded_opal_GLOW.png-84acad0ffed0cf74f2cc3c04a4afbf3a.ctex"
+uid="uid://o78h6wfckpej"
+path="res://.godot/imported/embedded_pearl.png-5b1a1e209a34f6bb5b88f7fc41e75e98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/item_art_overlays/observatory/embedded_opal_GLOW.png"
-dest_files=["res://.godot/imported/embedded_opal_GLOW.png-84acad0ffed0cf74f2cc3c04a4afbf3a.ctex"]
+source_file="res://art/item_art_overlays/observatory/embedded_pearl.png"
+dest_files=["res://.godot/imported/embedded_pearl.png-5b1a1e209a34f6bb5b88f7fc41e75e98.ctex"]
 
 [params]
 
