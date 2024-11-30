@@ -54,6 +54,14 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					GameState.drop_item("CAKE_TIN")
 					GameState.grab_item("CAKE_TIN_OF_WATER"),
+			},
+			{
+				"LABEL": "Empty Bottle of Expensive Wine",
+				"SHOW_IF": func():
+					return GameState.has_item("BOTTLE_OF_EXPENSIVE_WINE"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("BOTTLE_OF_EXPENSIVE_WINE")
+					GameState.grab_item("EMPTY_BOTTLE"),
 			}
 		]
 	},
@@ -272,29 +280,19 @@ var items = [
 	},
 	{
 		"NAME": "BOTTLE_OF_EXPENSIVE_WINE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine_GONE.png"),
 			"GLOW": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/bottle_of_expensive_wine.png")
 		},
-		"CAN_GRAB": false,
+		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Cellar",
 		},
 		"INSPECT_TEXT": "Some fancy-pants wine.",
-		"INTERACTIONS": [
-			{
-				"LABEL": "Empty & Take",
-				"RESULT": func(item: ClickableItem):
-					if not GameState.can_fit_item("EMPTY_BOTTLE"):
-						GameState.popup_inventory_full()
-						return
-					
-					item.hide()
-					GameState.grab_item("EMPTY_BOTTLE"),
-			}			
-		]
+		"INTERACTIONS": []
 	},
 	{
 		"NAME": "EMPTY_BOTTLE",
@@ -361,7 +359,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Studio"
 		},
-		"INSPECT_TEXT": "A beautiful amethyst gem.",
+		"INSPECT_TEXT": "A beautiful amethyst gemstone embedded in the table.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Use Hammer and Chisel",
@@ -389,7 +387,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Bedroom"
 		},
-		"INSPECT_TEXT": "A beautiful garnet gemstone.",
+		"INSPECT_TEXT": "A beautiful garnet gemstone embedded in the desk.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Use Hammer and Chisel",
@@ -397,6 +395,30 @@ var items = [
 					return GameState.has_item("HAMMER_AND_CHISEL"),
 				"RESULT": func(item: ClickableItem):
 					GameState.grab_item("EMBEDDED_GARNET"),
+			}
+		]
+	},
+	{
+		"NAME": "EMBEDDED_SAPPHIRE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/embedded_sapphire.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/office/embedded_sapphire_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/embedded_sapphire_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/embedded_sapphire.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Office"
+		},
+		"INSPECT_TEXT": "A beautiful sapphire gemstone embedded in the desk.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Hammer and Chisel",
+				"SHOW_IF": func():
+					return GameState.has_item("HAMMER_AND_CHISEL"),
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("EMBEDDED_SAPPHIRE"),
 			}
 		]
 	},
@@ -834,6 +856,121 @@ var items = [
 					GameState.popup('"Arr matey. There be buried treasure under a conspicuous patch of dirt on the left side of the Conservatory, arr."', 10),
 			},
 		]
+	},
+	{
+		"NAME": "RED_BRICK",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/red_brick.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/conservatory/red_brick_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/red_brick_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "This brick seems suspicious.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Check",
+				"RESULT": func(item: ClickableItem):
+					item.hide_item()
+					GameState.grab_item("RUBY"),
+			},
+		]
+	},
+	{
+		"NAME": "RUBY",
+		"SIZE": "1x1",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/ruby.png")
+		}
+	},
+	{
+		"NAME": "MAGIC_EIGHT_BALL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/office/magic_eight_ball.png"),
+			"GLOW": preload("res://art/item_art_overlays/office/magic_eight_ball_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Office"
+		},
+		"INSPECT_TEXT": "A Magic 8 Ball.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Look Into",
+				"RESULT": func(item: ClickableItem):
+					var random = Time.get_ticks_msec() % 2
+					if random == 0:
+						GameState.popup('"CONSERVATORY"')
+					else:
+						GameState.popup('"HIGH BRICK"'),
+			},
+		]
+	},
+	{
+		"NAME": "ANTIQUE_FIGURINES",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/antique_figurines.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/antique_figurines_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/antique_figurines_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_figurines.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "Antique figurines.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_TYPEWRITER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/antique_typewriter.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/antique_typewriter_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/antique_typewriter_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_typewriter.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique typewriter.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_RUG",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/rug.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/rug_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/rug_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_rug.png")
+		},
+		"SIZE": "1x4",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique rug.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_JEWELRY_BOX",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/jewelry_box.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/jewelry_box_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/jewelry_box_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/jewelry_box.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique rug.",
+		"INTERACTIONS": []
 	},
 	
 	## DOORS ##
