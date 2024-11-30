@@ -54,6 +54,14 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					GameState.drop_item("CAKE_TIN")
 					GameState.grab_item("CAKE_TIN_OF_WATER"),
+			},
+			{
+				"LABEL": "Empty Bottle of Expensive Wine",
+				"SHOW_IF": func():
+					return GameState.has_item("BOTTLE_OF_EXPENSIVE_WINE"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("BOTTLE_OF_EXPENSIVE_WINE")
+					GameState.grab_item("EMPTY_BOTTLE"),
 			}
 		]
 	},
@@ -272,29 +280,19 @@ var items = [
 	},
 	{
 		"NAME": "BOTTLE_OF_EXPENSIVE_WINE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine_GONE.png"),
 			"GLOW": preload("res://art/item_art_overlays/cellar/bottle_of_expensive_wine_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/bottle_of_expensive_wine.png")
 		},
-		"CAN_GRAB": false,
+		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Cellar",
 		},
 		"INSPECT_TEXT": "Some fancy-pants wine.",
-		"INTERACTIONS": [
-			{
-				"LABEL": "Empty & Take",
-				"RESULT": func(item: ClickableItem):
-					if not GameState.can_fit_item("EMPTY_BOTTLE"):
-						GameState.popup_inventory_full()
-						return
-					
-					item.hide()
-					GameState.grab_item("EMPTY_BOTTLE"),
-			}			
-		]
+		"INTERACTIONS": []
 	},
 	{
 		"NAME": "EMPTY_BOTTLE",
@@ -882,6 +880,7 @@ var items = [
 	},
 	{
 		"NAME": "RUBY",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/ruby.png")
 		}
@@ -908,6 +907,70 @@ var items = [
 						GameState.popup('"HIGH BRICK"'),
 			},
 		]
+	},
+	{
+		"NAME": "ANTIQUE_FIGURINES",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/antique_figurines.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/antique_figurines_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/antique_figurines_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_figurines.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "Antique figurines.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_TYPEWRITER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/antique_typewriter.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/antique_typewriter_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/antique_typewriter_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_typewriter.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique typewriter.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_RUG",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/rug.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/rug_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/rug_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/antique_rug.png")
+		},
+		"SIZE": "1x4",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique rug.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "ANTIQUE_JEWELRY_BOX",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/attic/jewelry_box.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/attic/jewelry_box_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/attic/jewelry_box_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/jewelry_box.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Attic"
+		},
+		"INSPECT_TEXT": "An antique rug.",
+		"INTERACTIONS": []
 	},
 	
 	## DOORS ##
