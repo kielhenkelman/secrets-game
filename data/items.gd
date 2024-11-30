@@ -11,6 +11,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/cellar/bucket_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/bucket.png")
 		},
+		"SIZE": "1x2",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Cellar"
@@ -26,6 +27,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/cake_tin_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/cake_tin.png")
 		},
+		"SIZE": "2x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Kitchen",
@@ -63,6 +65,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/eggs_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/eggs.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Kitchen"
@@ -88,6 +91,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/instant_cake_mix_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/instant_cake_mix.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Kitchen",
@@ -107,30 +111,35 @@ var items = [
 	},
 	{
 		"NAME": "CAKE_TIN_OF_WATER",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_water.png")
 		}
 	},
 	{
 		"NAME": "CAKE_TIN_OF_WATER_AND_CAKE_MIX",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_water_and_cake_mix.png")
 		}
 	},
 	{
 		"NAME": "CAKE_TIN_OF_INGREDIENTS",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake_tin_of_ingredients.png")
 		}
 	},
 	{
 		"NAME": "CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/cake.png")
 		}
 	},
 	{
 		"NAME": "BURNT_CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/burnt_cake.png")
 		}
@@ -160,6 +169,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.oven.start_time != -1,
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("CAKE"):
+						GameState.popup_inventory_full()
+						return
+					
 					var time_elapsed = Time.get_ticks_msec() - GameState.oven.start_time
 					if time_elapsed < 20000:
 						GameState.grab_item("CAKE_TIN_OF_INGREDIENTS")
@@ -175,6 +188,7 @@ var items = [
 	},
 	{
 		"NAME": "AXE",
+		"SIZE": "3x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/studio/axe.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/studio/axe_GONE.png"),
@@ -206,6 +220,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("AXE"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("GOLDEN_AXE"):
+						GameState.popup_inventory_full()
+						return
+					
 					item.hide_item()
 					GameState.grab_item("GOLDEN_AXE"),
 			}
@@ -213,6 +231,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_AXE",
+		"SIZE": "3x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_axe.png")
 		},
@@ -235,6 +254,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("CAKE"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("GOLDEN_CAKE"):
+						GameState.popup_inventory_full()
+						return
+					
 					item.hide_item()
 					GameState.grab_item("GOLDEN_CAKE"),
 			}
@@ -242,6 +265,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_CAKE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_cake.png")
 		},
@@ -263,13 +287,18 @@ var items = [
 			{
 				"LABEL": "Empty & Take",
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
+					if not GameState.can_fit_item("EMPTY_BOTTLE"):
+						GameState.popup_inventory_full()
+						return
+					
+					item.hide()
 					GameState.grab_item("EMPTY_BOTTLE"),
 			}			
 		]
 	},
 	{
 		"NAME": "EMPTY_BOTTLE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/empty_bottle.png")
 		},
@@ -298,12 +327,14 @@ var items = [
 	},
 	{
 		"NAME": "BOTTLE_OF_REALLY_EXPENSIVE_WINE",
+		"SIZE": "1x2",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/bottle_of_really_expensive_wine.png")
 		},
 	},
 	{
 		"NAME": "HAMMER_AND_CHISEL",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/garage/hammer_and_chisel.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/garage/hammer_and_chisel_GONE.png"),
@@ -319,6 +350,7 @@ var items = [
 	},
 	{
 		"NAME": "EMBEDDED_AMETHYST",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/studio/embedded_amethyst.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/studio/embedded_amethyst_GONE.png"),
@@ -336,6 +368,9 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("HAMMER_AND_CHISEL"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("EMBEDDED_AMETHYST"):
+						GameState.popup_inventory_full()
+						return
 					item.hide_item()
 					GameState.grab_item("EMBEDDED_AMETHYST"),
 			}
@@ -349,6 +384,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/embedded_garnet_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/embedded_garnet.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -360,7 +396,6 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("HAMMER_AND_CHISEL"),
 				"RESULT": func(item: ClickableItem):
-					item.hide_item()
 					GameState.grab_item("EMBEDDED_GARNET"),
 			}
 		]
@@ -397,6 +432,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/studio/grand_piano_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/grand_piano.png")
 		},
+		"SIZE": "3x4",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Studio",
@@ -412,6 +448,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/silver_cane_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/silver_cane.png")
 		},
+		"SIZE": "1x3",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Gallery",
@@ -427,6 +464,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/multitool_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/multitool.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage",
@@ -456,6 +494,10 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("MULTITOOL"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("SILVER_PLATES"):
+						GameState.popup_inventory_full()
+						return
+					
 					item.clickable = false
 					GameState.grab_item("SILVER_PLATES"),
 			}
@@ -463,12 +505,14 @@ var items = [
 	},
 	{
 		"NAME": "SILVER_PLATES",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/silver_plates.png")
 		},
 	},
 	{
 		"NAME": "RUBBER_GRABBER",
+		"SIZE": "1x3",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/kitchen/rubber_grabber.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/kitchen/rubber_grabber_GONE.png"),
@@ -490,6 +534,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/cellar/opal_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/opal.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Cellar"
@@ -506,6 +551,9 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("RUBBER_GRABBER"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("OPAL"):
+						GameState.popup_inventory_full()
+						return
 					item.hide_item()
 					GameState.grab_item("OPAL"),
 			}
@@ -519,6 +567,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/ladder_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/ladder.png")
 		},
+		"SIZE": "1x4",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -534,6 +583,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/black_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/black_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -549,6 +599,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/studio/yellow_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/yellow_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Studio"
@@ -564,6 +615,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/observatory/white_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/white_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Observatory"
@@ -579,6 +631,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/blue_puzzle_piece_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/blue_puzzle_piece.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -594,6 +647,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/bedroom/abstract_art_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/abstract_art.png")
 		},
+		"SIZE": "2x2",
 		"CAN_GRAB": false,
 		"SPAWN": {
 			"ROOM": "Bedroom"
@@ -608,6 +662,10 @@ var items = [
 						GameState.has_item("WHITE_PUZZLE_PIECE") &&
 						GameState.has_item("BLUE_PUZZLE_PIECE")),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("ABSTRACT_ART"):
+						GameState.popup_inventory_full()
+						return
+					
 					item.hide_item()
 					GameState.drop_item("BLACK_PUZZLE_PIECE")
 					GameState.drop_item("YELLOW_PUZZLE_PIECE")
@@ -625,6 +683,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/knife_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/knife.png")
 		},
+		"SIZE": "2x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Gallery"
@@ -634,6 +693,7 @@ var items = [
 	},
 	{
 		"NAME": "TURQUOISE_PAINTED_KNIFE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/turquoise_painted_knife.png")
 		}
@@ -662,6 +722,7 @@ var items = [
 	},
 	{
 		"NAME": "GOLDEN_KNIFE",
+		"SIZE": "2x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/golden_knife.png")
 		}
@@ -671,7 +732,7 @@ var items = [
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/gallery/knife_painting.png"),
 			"HIDDEN": preload("res://art/item_art_overlays/gallery/knife_painting_GONE.png"),
-			"GLOW": preload("res://art/item_art_overlays/gallery/knife_painting.png")
+			"GLOW": preload("res://art/item_art_overlays/gallery/knife_painting_GLOW.png")
 		},
 		"CAN_GRAB": false,
 		"SPAWN": {
@@ -691,6 +752,9 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("TURQUOISE_PAINTED_KNIFE"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("GOLDEN_KNIFE"):
+						GameState.popup_inventory_full()
+						return
 					item.hide_item()
 					GameState.grab_item("GOLDEN_KNIFE"),
 			}
@@ -704,6 +768,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/kitchen/large_jar_of_saffron_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/large_jar_of_saffron.png")
 		},
+		"SIZE": "1x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Kitchen"
@@ -719,6 +784,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/office/vintage_cigar_box_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/vintage_cigar_box.png")
 		},
+		"SIZE": "2x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Office"
@@ -734,6 +800,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/garage/shovel_GLOW.png"),
 			"ICON": preload("res://art/inventory_icons/shovel.png")
 		},
+		"SIZE": "3x1",
 		"CAN_GRAB": true,
 		"SPAWN": {
 			"ROOM": "Garage"
@@ -758,6 +825,9 @@ var items = [
 				"SHOW_IF": func():
 					return GameState.has_item("SHOVEL"),
 				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("TREASURE"):
+						GameState.popup_inventory_full()
+						return
 					item.hide_item()
 					GameState.grab_item("TREASURE"),
 			},
@@ -765,6 +835,7 @@ var items = [
 	},
 	{
 		"NAME": "TREASURE",
+		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/treasure.png")
 		}

@@ -24,16 +24,11 @@ func _ready() -> void:
 	GameState.connect("room_changed", on_room_change)
 	GameState.connect("popup_added", on_popup_added) 
 	Input.set_custom_mouse_cursor(cursor_shape)
-	$HUD/Inventory.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_add_button_pressed() -> void:
-	var new_item = $ItemName.get_text()
-	$HUD/Inventory.add_item(new_item)
 
 func on_room_change(room_name):
 	for room in rooms:
@@ -45,4 +40,3 @@ func on_popup_added(text, duration):
 	pop_up.text_to_show = text
 	pop_up.show_time = duration
 	add_child(pop_up)
-	
