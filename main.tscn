@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=25 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
 [ext_resource type="PackedScene" uid="uid://dn6t2dnsuhjs2" path="res://scenes/hud/hud.tscn" id="2_6js6j"]
 [ext_resource type="PackedScene" uid="uid://bbi2hdlokbj7y" path="res://scenes/rooms/cellar.tscn" id="3_6kxcd"]
+[ext_resource type="AudioStream" uid="uid://650kb5yrof81" path="res://music/hog_heist.mp3" id="3_yaf6n"]
 [ext_resource type="PackedScene" uid="uid://cphink22g4o52" path="res://scenes/rooms/studio.tscn" id="4_3rh0x"]
 [ext_resource type="PackedScene" uid="uid://r1o6eh6rfvg" path="res://scenes/rooms/gallery.tscn" id="4_s0fjh"]
 [ext_resource type="PackedScene" uid="uid://cr0xfmnhe80bk" path="res://scenes/rooms/garage.tscn" id="5_mul2r"]
@@ -31,6 +32,11 @@ pop_up_scene = ExtResource("8_jjik4")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 900.0
 autostart = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yaf6n")
+autoplay = true
+parameters/looping = true
 
 [node name="HUD" parent="." instance=ExtResource("2_6js6j")]
 
