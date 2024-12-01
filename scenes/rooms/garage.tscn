@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0miu0a6n7q6w"]
+[gd_scene load_steps=3 format=3 uid="uid://cr0xfmnhe80bk"]
 
 [ext_resource type="Script" path="res://scenes/rooms/garage.gd" id="1_p7ath"]
 [ext_resource type="Texture2D" uid="uid://b4tqx1xcgw8n2" path="res://art/room_art/garage.png" id="2_jj4ti"]

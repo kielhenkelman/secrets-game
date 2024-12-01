@@ -30,3 +30,6 @@ func _on_continue_pressed() -> void:
 	if current_screen == LAST_SCREEN:
 		$Continue.disabled = true
 		$Continue.visible = false
+		
+		$FinalValue.text = "$" + Helpers.format_haul(GameState.current_value())
+		$FinalValue.visible = true

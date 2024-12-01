@@ -28,7 +28,6 @@ var current_room = "Gallery"
 
 func _ready():
 	load_data()
-	
 
 func load_data():
 	for item in ItemData.items:

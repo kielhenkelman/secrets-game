@@ -54,7 +54,7 @@ func update_labels():
 		name_label.text = ""
 		value_label.text = ""
 	
-	$Background/TotalValue.text = "Total: " + str(current_value())
+	$Background/TotalValue.text = "Total: $" + Helpers.format_haul(current_value())
 	
 	
 func throw_away_item(inv_item):

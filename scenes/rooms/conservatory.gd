@@ -8,7 +8,6 @@ var items = {}
 func _ready() -> void:
 	GameState.connect("flag_updated", on_flag_updated) 
 	items = spawn_items("Conservatory")
-	print("conservatory._ready()")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
