@@ -35,11 +35,12 @@ autostart = true
 [node name="HUD" parent="." instance=ExtResource("2_6js6j")]
 
 [node name="Timer" type="Label" parent="HUD"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 33.0
-scale = Vector2(2, 2)
+offset_left = 35.0
+offset_top = 50.0
+offset_right = 91.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 22
+text = "15:00"
 
 [node name="Gallery" parent="." instance=ExtResource("4_s0fjh")]
 
