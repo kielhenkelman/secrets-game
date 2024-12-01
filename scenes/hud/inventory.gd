@@ -43,8 +43,8 @@ func _process(delta: float) -> void:
 static func current_value() -> int:
 	var total_value = 0
 	for item_id in inventory_items:
-		var inv_item = inventory_items[item_id]
-		total_value += inv_item.item_value
+		var game_item = GameState.ITEM_DATA[item_id]
+		total_value += game_item.item_value
 	return total_value
 	
 func update_labels():
