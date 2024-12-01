@@ -70,3 +70,6 @@ func start_oven() -> void:
 
 func stop_oven() -> void:
 	oven.start_time = -1;
+
+func current_value() -> int:
+	return _inventory.current_value()

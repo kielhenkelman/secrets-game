@@ -3,7 +3,8 @@ extends Control
 @onready var slot_scene = preload("res://scenes/hud/slot.tscn")
 @onready var item_scene = preload("res://scenes/hud/inventory_item.tscn")
 
-@onready var held_item_label = $Background/MarginContainer/VBoxContainer/Header/CurrentItemName
+@onready var name_label = $Background/MarginContainer/VBoxContainer/Header/CurrentItemName
+@onready var value_label = $Background/MarginContainer/VBoxContainer/Header/CurrentItemValue
 @onready var scroll_container = $Background/MarginContainer/VBoxContainer/ScrollContainer
 @onready var grid_container = $Background/MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
@@ -21,9 +22,9 @@ var current_slot = null
 func _ready() -> void:
 	GameState.connect("item_grabbed", _on_item_grabbed)
 	GameState.connect("item_dropped", _on_item_dropped) 
-	for i in range(64):
+	for i in range(40):
 		create_slot()
-		
+	
 func _process(delta: float) -> void:
 	if not inventory_open:
 		return
@@ -38,6 +39,23 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
 				pick_up_item(current_slot)
+
+static func current_value() -> int:
+	var total_value = 0
+	for item_id in inventory_items:
+		var inv_item = inventory_items[item_id]
+		total_value += inv_item.item_value
+	return total_value
+	
+func update_labels():
+	if item_held:
+		name_label.text = item_held.item_name + " (" + str(item_held.item_value) + ")"
+	else:
+		name_label.text = ""
+		value_label.text = ""
+	
+	$Background/TotalValue.text = "Total: " + str(current_value())
+	
 	
 func throw_away_item(inv_item):
 	inv_item.queue_free()
@@ -45,8 +63,8 @@ func throw_away_item(inv_item):
 
 	reset_slot_highlights()
 	
-	held_item_label.text = ""
 	item_held = null
+	update_labels()
 	
 func put_down_item(inv_item, inv_slot):
 	if not inv_slot or not can_place_item(inv_item.item_parts, inv_slot): 
@@ -56,9 +74,8 @@ func put_down_item(inv_item, inv_slot):
 	place_item_on_grid(inv_item, true)
 	reset_slot_highlights()
 	
-	held_item_label.text = ""
 	item_held = null
-	
+	update_labels()
 	
 func pick_up_item(inv_slot):
 	if not inv_slot or not inv_slot.item_stored: 
@@ -75,8 +92,8 @@ func pick_up_item(inv_slot):
 	
 	set_slot_highlights.call_deferred(inv_item.item_parts, current_slot)
 	
-	held_item_label.text = inv_item.item_id
 	item_held = inv_item
+	update_labels()
 		
 func top_left_corner(inv_item):
 	var top_left = Vector2(100, 100)
@@ -111,6 +128,7 @@ func _on_item_dropped(item_id):
 	remove_item_from_grid(inv_item)
 	inv_item.queue_free()
 	inventory_items.erase(item_id)
+	update_labels()
 	
 func _on_item_grabbed(item_id):
 	var game_item: GameItem = GameState.ITEM_DATA[item_id]
@@ -121,6 +139,7 @@ func _on_item_grabbed(item_id):
 	add_item_to_grid(inv_item, anchor_slot)
 	
 	inventory_items[item_id] = inv_item
+	update_labels()
 
 static func reset_slot_highlights():
 	for slot in inventory_slots:

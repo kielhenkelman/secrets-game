@@ -6,6 +6,7 @@ var item_id: String
 var can_grab: bool
 var inspect_text: String
 var spawn_room: String
+var item_name: String
 
 var interactions = []
 
@@ -51,6 +52,9 @@ func load_json(item_json):
 		item_size = item_json['SIZE']
 		item_parts = PARTS_DATA[item_size]
 	
+	if 'DISPLAY_NAME' in item_json:
+		item_name = item_json['DISPLAY_NAME']
+		
 	if 'VALUE' in item_json:
 		item_value = item_json['VALUE']
 	
