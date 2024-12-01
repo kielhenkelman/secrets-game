@@ -27,6 +27,13 @@ pop_up_scene = ExtResource("8_jjik4")
 
 [node name="HUD" parent="." instance=ExtResource("2_6js6j")]
 
+[node name="Timer" type="Label" parent="HUD"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 33.0
+scale = Vector2(2, 2)
+
 [node name="Gallery" parent="." instance=ExtResource("4_s0fjh")]
 
 [node name="Cellar" parent="." instance=ExtResource("3_6kxcd")]
@@ -66,3 +73,9 @@ script = ExtResource("18_vsgud")
 [node name="Attic" parent="." instance=ExtResource("19_ent4l")]
 visible = false
 script = ExtResource("20_ddra3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 900.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
