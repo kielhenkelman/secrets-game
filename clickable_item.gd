@@ -6,9 +6,17 @@ class_name ClickableItem
 
 var game_item: GameItem
 var clickable: bool = true
+var always_highlight: bool = false
 
 var cursor_default = load("res://art/idc_arrow.png")
 var cursor_help = load("res://art/idc_help.png")
+
+func set_always_highlight(value: bool):
+	always_highlight = value
+	if always_highlight:
+		$Glow.texture = game_item.glow_texture
+	else:
+		$Glow.texture = game_item.default_texture
 
 func hide_item() -> void:
 	clickable = false
@@ -99,10 +107,11 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		$ContextMenu.visible = false
-	if event.is_action_pressed("highlight_all") and clickable:
-		$Glow.texture = game_item.glow_texture
-	if event.is_action_released("highlight_all"):
-		$Glow.texture = game_item.default_texture
+	if not always_highlight:
+		if event.is_action_pressed("highlight_all") and clickable:
+			$Glow.texture = game_item.glow_texture
+		if event.is_action_released("highlight_all"):
+			$Glow.texture = game_item.default_texture
 
 func set_texture(texture: Texture2D):
 	$Sprite2D.texture = texture
@@ -117,5 +126,5 @@ func _on_mouse_entered() -> void:
 		
 func _on_mouse_exited() -> void:
 	Input.set_custom_mouse_cursor(cursor_default)
-	if not Input.is_action_pressed("highlight_all"):
+	if not Input.is_action_pressed("highlight_all") and not always_highlight:
 		$Glow.texture = game_item.default_texture

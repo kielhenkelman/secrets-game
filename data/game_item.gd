@@ -20,6 +20,7 @@ var item_size: String
 var item_value: int
 
 var item_parts: Array
+var spawn_hidden: bool = false
 
 var PARTS_DATA = {
 	'1x1': [[0,0]],
@@ -60,6 +61,9 @@ func load_json(item_json):
 	
 	if 'SPAWN' in item_json and 'ROOM' in item_json['SPAWN']:
 		spawn_room = item_json['SPAWN']['ROOM']
+		
+		if 'HIDDEN' in item_json['SPAWN']:
+			spawn_hidden = item_json['SPAWN']['HIDDEN']
 	
 	if 'TEXTURE' in item_json:
 		if 'HITBOX' in item_json['TEXTURE']:

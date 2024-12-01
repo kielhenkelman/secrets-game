@@ -13,6 +13,8 @@ func spawn_items(room_name: String) -> Dictionary:
 			new_item.game_item = game_item
 			items_dict[game_item.item_id] = new_item
 			add_child(new_item)
+			if game_item.spawn_hidden:
+				new_item.hide_item()
 			
 	return items_dict
 
