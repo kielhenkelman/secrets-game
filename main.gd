@@ -53,3 +53,6 @@ func on_timer_timeout():
 	var root = get_tree().get_root()
 	root.get_node("Main").queue_free()
 	root.add_child(end_scene.instantiate())
+
+func _on_music_finished() -> void:
+	$Music.play()
