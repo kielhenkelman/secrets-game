@@ -1,5 +1,6 @@
 extends Node2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,5 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_to_kitchen_pressed() -> void:
-	GameState.change_room("Kitchen")
+func _on_to_cellar_pressed() -> void:
+	GameState.change_room("Cellar")
+	print("here 1")
