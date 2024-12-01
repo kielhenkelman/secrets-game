@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://damfovcb1hkin"]
+
+[ext_resource type="Script" path="res://scenes/rooms/telescope.gd" id="1_03lsb"]
+[ext_resource type="Texture2D" uid="uid://cy4j3ycwpqowy" path="res://art/back_button.png" id="2_dgnvc"]
+[ext_resource type="Texture2D" uid="uid://pi2taquhcj7w" path="res://art/telescope_left.png" id="4_kqqv4"]
+[ext_resource type="Texture2D" uid="uid://bpjg4v3ld1nxo" path="res://art/telescope_right.png" id="5_yit0b"]
+
+[node name="Telescope" type="Node2D"]
+script = ExtResource("1_03lsb")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ToObservatory" type="TextureButton" parent="."]
+top_level = true
+offset_left = 78.0
+offset_top = 63.0
+offset_right = 278.0
+offset_bottom = 263.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("2_dgnvc")
+stretch_mode = 0
+
+[node name="LeftArrow" type="TextureButton" parent="."]
+top_level = true
+offset_left = 50.0
+offset_top = 345.0
+offset_right = 93.0
+offset_bottom = 370.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_kqqv4")
+
+[node name="RightArrow" type="TextureButton" parent="."]
+top_level = true
+offset_left = 1050.0
+offset_top = 345.0
+offset_right = 1093.0
+offset_bottom = 370.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_yit0b")
+
+[connection signal="pressed" from="ToObservatory" to="." method="_on_to_observatory_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]
