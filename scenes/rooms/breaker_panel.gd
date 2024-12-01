@@ -1,10 +1,10 @@
 extends Node2D
 
-var light_on = preload("res://art/items/breaker_light_on.png")
-var light_off = preload("res://art/items/breaker_light_off.png")
+var light_on = preload("res://art/room_art/light_on.png")
+var light_off = preload("res://art/room_art/light_off.png")
 
-var switch_on = preload("res://art/items/breaker_switch_on.png")
-var switch_off = preload("res://art/items/breaker_switch_off.png")
+var switch_on = preload("res://art/room_art/switch_on.png")
+var switch_off = preload("res://art/room_art/switch_off.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,4 +97,4 @@ func _on_switch_5_pressed() -> void:
 	switches[5] = !switches[5]
 	$BreakerBackground/Switch_5.texture_normal = switch_on if switches[5] else switch_off
 	update_breaker()
-    
+	

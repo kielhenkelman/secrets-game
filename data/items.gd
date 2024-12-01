@@ -853,6 +853,15 @@ var items = [
 		}
 	},
 	{
+		"NAME": "TURQUOISE_PAINTED_GEM",
+		"DISPLAY_NAME": "Turquoise Gem",
+		"VALUE": 1000000,
+		"SIZE": "1x1",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/turqoise_painted_gemstone.png")
+		}
+	},
+	{
 		"NAME": "TROUGH_OF_TURQUOISE_PAINT",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/conservatory/trough_of_turquoise_paint.png"),
