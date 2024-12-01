@@ -1213,6 +1213,107 @@ var items = [
 		"INSPECT_TEXT": "An unnecessarily expensive salt shaker.",
 		"INTERACTIONS": []
 	},
+	{
+		"NAME": "TELESCOPE_LEFT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/telescope_2.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/telescope_2_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A telescope.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Look-through",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room("TelescopeLeft"),
+			}
+		]
+	},
+	{
+		"NAME": "TELESCOPE_RIGHT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/telescope_1.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/telescope_1_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A telescope.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Look-through",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room("TelescopeRight"),
+			}
+		]
+	},
+	{
+		"NAME": "TERMINAL",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/terminal.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/terminal_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A terminal.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"RESULT": func(item: ClickableItem):
+					GameState.popup("SYSTEM CALIBRATION: Point one telescope at Aries and one telescope at Pisces to unlock drawer.", 6),
+			}
+		]
+	},
+	{
+		"NAME": "DRAWER",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/drawer.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/drawer_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A drawer.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Open",
+				"RESULT": func(item: ClickableItem):
+					const ARIES = 0
+					const PISCES = 11
+					
+					var aries_pointed_at = GameState.telescope_left == ARIES || GameState.telescope_right == ARIES
+					var pisces_pointed_at = GameState.telescope_left == PISCES || GameState.telescope_right == PISCES
+					var puzzle_solved = aries_pointed_at && pisces_pointed_at
+					
+					if puzzle_solved:
+						if GameState.can_fit_item("CRYSTAL_LENS"):
+							GameState.grab_item("CRYSTAL_LENS")
+							GameState.popup("Received Crystal Lens.")
+							item.clickable = false
+						else:
+							GameState.popup_inventory_full()
+					else:
+						GameState.popup("It's locked shut.", 3),
+			}
+		]
+	},
+	{
+		"NAME": "CRYSTAL_LENS",
+		"DISPLAY_NAME": "Crystal Lens",
+		"SIZE": "1x1",
+		"VALUE": 5000000,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/crystal_lens.png")
+		},
+		"INTERACTIONS": []
+	},
 	
 	## DOORS ##
 	{

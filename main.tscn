@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=23 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
 [ext_resource type="PackedScene" uid="uid://dn6t2dnsuhjs2" path="res://scenes/hud/hud.tscn" id="2_6js6j"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dh5updeft7n05" path="res://scenes/rooms/attic.tscn" id="19_ent4l"]
 [ext_resource type="Script" path="res://scenes/rooms/attic.gd" id="20_ddra3"]
 [ext_resource type="PackedScene" uid="uid://branttvtk7oq8" path="res://scenes/rooms/diary.tscn" id="21_hj7mj"]
+[ext_resource type="PackedScene" uid="uid://damfovcb1hkin" path="res://scenes/rooms/telescope.tscn" id="22_px5q1"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kyrq5")
@@ -81,5 +82,13 @@ script = ExtResource("20_ddra3")
 
 [node name="Diary" parent="." instance=ExtResource("21_hj7mj")]
 visible = false
+
+[node name="TelescopeLeft" parent="." instance=ExtResource("22_px5q1")]
+visible = false
+metadata/telescope_id = 2
+
+[node name="TelescopeRight" parent="." instance=ExtResource("22_px5q1")]
+visible = false
+metadata/telescope_id = 1
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]

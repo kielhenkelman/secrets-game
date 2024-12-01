@@ -11,18 +11,12 @@ signal popup_added(text, duration)
 var ITEM_DATA = {}
 var FLAGS = {}
 
-var rooms = [
-	"Gallery",
-	"Garage",
-	"Studio",
-	"Cellar",
-	"Observatory",
-	"Kitchen"
-]
-
 var oven = {
 	start_time = -1
 }
+
+var telescope_left = 4
+var telescope_right = 6
 
 var current_room = "Gallery"
 
@@ -72,3 +66,9 @@ func stop_oven() -> void:
 
 func current_value() -> int:
 	return _inventory.current_value()
+
+func change_telescope_left(zodiac: String):
+	telescope_left = zodiac
+
+func change_telescope_right(zodiac: String):
+	telescope_right = zodiac
