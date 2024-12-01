@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cncg75v7wfe06"]
+
+[ext_resource type="Script" path="res://scenes/title.gd" id="1_yiq2v"]
+[ext_resource type="Texture2D" uid="uid://blxogdvk8ys1t" path="res://art/room_art/specialroom_title_1.png" id="2_c450t"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_yiq2v")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_c450t")
+
+[node name="Continue" type="LinkButton" parent="."]
+offset_left = 520.0
+offset_top = 680.0
+offset_right = 690.0
+offset_bottom = 710.0
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
