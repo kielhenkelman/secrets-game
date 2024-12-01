@@ -83,8 +83,16 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		draw_context_menu()
 		
 		var mouse_position = get_global_mouse_position()
-		mouse_position.x += 15
-		mouse_position.y += 15
+		
+		var offset_x = 25
+		var offset_y = 25
+		if mouse_position.y > 600:
+			offset_y = -100
+		if mouse_position.x > 1100:
+			offset_x = -100
+			
+		mouse_position.x += offset_x
+		mouse_position.y += offset_y
 		$ContextMenu.global_position = mouse_position
 		$ContextMenu.visible = true
 

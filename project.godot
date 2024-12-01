@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameState="*res://logic/game_state.gd"
 ItemData="*res://data/items.gd"
+Helpers="*res://logic/helpers.gd"
 
 [display]
 
