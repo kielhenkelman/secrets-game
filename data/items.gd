@@ -1195,6 +1195,24 @@ var items = [
 		},
 		"INTERACTIONS": []
 	},
+	{
+		"NAME": "SILVER_SALT_SHAKER",
+		"DISPLAY_NAME": "Silver Salt Shaker",
+		"VALUE": 10000,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker_GLOW.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker_GONE.png"),
+			"ICON": preload("res://art/inventory_icons/silver_salt_shaker.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "An unnecessarily expensive salt shaker.",
+		"INTERACTIONS": []
+	},
 	
 	## DOORS ##
 	{
