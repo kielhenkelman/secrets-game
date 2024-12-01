@@ -1060,6 +1060,26 @@ var items = [
 		"INSPECT_TEXT": "An antique rug.",
 		"INTERACTIONS": []
 	},
+	{
+		"NAME": "RECIPE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/recipe.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/recipe_GLOW.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "Looks like a recipe. I should read it.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('CakeRecipe'),
+			},
+		]
+	},
 	
 	## DOORS ##
 	{
