@@ -1367,6 +1367,82 @@ var items = [
 		"INTERACTIONS": []
 	},
 	{
+		"NAME": "MAGNET",
+		"DISPLAY_NAME": "Magnet",
+		"VALUE": 10,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/magnet.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/magnet_GLOW.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/observatory/magnet_GONE.png"),
+			"ICON": preload("res://art/inventory_icons/magnet.png")
+		},
+		"SIZE": "1x2",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "Just a magent left unattended.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "RED_KEY",
+		"DISPLAY_NAME": "Red Key",
+		"VALUE": 1,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/cellar/red_key.png"),
+			"GLOW": preload("res://art/item_art_overlays/cellar/red_key_GLOW.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/cellar/red_key_GONE.png"),
+			"ICON": preload("res://art/inventory_icons/red_key.png")
+		},
+		"SIZE": "1x1",
+		"SPAWN": {
+			"ROOM": "Cellar"
+		},
+		"INSPECT_TEXT": "This metal key is hard to reach, if only there was a magent...",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Grab with Magenet",
+				"SHOW_IF": func():
+					return GameState.has_item("MAGNET"),
+				"RESULT": func(item: ClickableItem):
+					GameState.grab_item("RED_KEY"),
+			}
+		]
+	},
+	{
+		"NAME": "GEODE",
+		"DISPLAY_NAME": "Geode",
+		"VALUE": 1000000,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/geode.png")
+		},
+		"SIZE": "1x1",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "RED_VAULT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/cellar/red_vault.png"),
+			"GLOW": preload("res://art/item_art_overlays/cellar/red_vault_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Cellar"
+		},
+		"INSPECT_TEXT": "A red vault.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Open Vault",
+				"RESULT": func(item: ClickableItem):
+					if GameState.has_item("RED_KEY"):
+						GameState.drop_item("RED_KEY")
+						GameState.grab_item("GEODE")
+					else:
+						GameState.popup("Missing a red key"),
+			}
+		]
+	},
+	{
 		"NAME": "TELESCOPE_LEFT",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/observatory/telescope_2.png"),
@@ -1610,7 +1686,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/door_to_studio_GLOW.png")
 		},
 		"CAN_GRAB": false,
-		"SPAWN": { "ROOM": "Gallery", "ALWAYS_HIGHLIGHT": true },
+		"SPAWN": { "ROOM": "Gallery" },
 		"INTERACTIONS": [
 			{
 				"LABEL": "Go to Studio",
@@ -1706,7 +1782,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/observatory/stairs_to_studio_GLOW.png")
 		},
 		"CAN_GRAB": false,
-		"SPAWN": { "ROOM": "Observatory" },
+		"SPAWN": { "ROOM": "Observatory", "ALWAYS_HIGHLIGHT": true },
 		"INTERACTIONS": [
 			{
 				"LABEL": "Go to Studio",

@@ -100,6 +100,8 @@ func top_left_corner(inv_item):
 	for part in inv_item.item_parts:
 		if part[1] < top_left.x: top_left.x = part[1]
 		if part[0] < top_left.y: top_left.y = part[0]
+	if top_left.x == 100 or top_left.y == 100: # TODO: Remove this later, bandaid fix to place_item crash
+		return Vector2(0, 0)
 	return top_left
 	
 func place_item_on_grid(inv_item, smooth := false):
@@ -140,6 +142,8 @@ func _on_item_grabbed(item_id):
 	
 	inventory_items[item_id] = inv_item
 	update_labels()
+	
+	GameState.popup("Aquired " + game_item.item_name)
 
 static func reset_slot_highlights():
 	for slot in inventory_slots:
