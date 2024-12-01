@@ -15,6 +15,8 @@ func spawn_items(room_name: String) -> Dictionary:
 			add_child(new_item)
 			if game_item.spawn_hidden:
 				new_item.hide_item()
+			if game_item.always_highlight:
+				new_item.set_always_highlight(true)
 			
 	return items_dict
 

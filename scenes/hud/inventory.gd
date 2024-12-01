@@ -22,7 +22,7 @@ var current_slot = null
 func _ready() -> void:
 	GameState.connect("item_grabbed", _on_item_grabbed)
 	GameState.connect("item_dropped", _on_item_dropped) 
-	for i in range(40):
+	for i in range(48):
 		create_slot()
 	
 func _process(delta: float) -> void:

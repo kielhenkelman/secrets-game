@@ -1533,7 +1533,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Cellar"
 		},
-		"INSPECT_TEXT": "A key attached to a chain. I can't remove it.",
+		"INSPECT_TEXT": "An evil looking cauldron.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Perform Ritual",
@@ -1543,12 +1543,13 @@ var items = [
 					if GameState.has_item("BREAD") \
 							and GameState.has_item("BUCKET_OF_WATER") \
 							and GameState.has_item("SILVER_SALT_SHAKER") \
-							and GameState.has_item("TURQUOISE_GEM"):
+							and GameState.has_item("TURQUOISE_PAINTED_GEM"):
 						GameState.drop_item("BUCKET_OF_WATER")
-						GameState.drop_item("TURQUOISE_GEM")
+						GameState.drop_item("BREAD")
+						GameState.drop_item("TURQUOISE_PAINTED_GEM")
 						GameState.grab_item("DIAMOND_ORB")
 					else:
-						GameState.popup("You're missing some ingridients."),
+						GameState.popup("You're missing some ingredients."),
 			}
 		]
 	},
@@ -1609,7 +1610,7 @@ var items = [
 			"GLOW": preload("res://art/item_art_overlays/gallery/door_to_studio_GLOW.png")
 		},
 		"CAN_GRAB": false,
-		"SPAWN": { "ROOM": "Gallery" },
+		"SPAWN": { "ROOM": "Gallery", "ALWAYS_HIGHLIGHT": true },
 		"INTERACTIONS": [
 			{
 				"LABEL": "Go to Studio",
