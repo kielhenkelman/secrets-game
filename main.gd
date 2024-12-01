@@ -3,6 +3,7 @@ extends Node
 @export var pop_up_scene: PackedScene
 
 var cursor_shape = load("res://art/idc_arrow.png")
+var end_scene = load("res://scenes/end.tscn")
 
 var rooms = [
 	"Gallery",
@@ -28,7 +29,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var time_left = int($Timer.get_time_left())
+	var minutes = (time_left / 60) % 60
+	var seconds = time_left % 60
+	$HUD/Timer.text = "%02d:%02d" % [minutes, seconds]
 
 func on_room_change(room_name):
 	for room in rooms:
@@ -40,3 +44,8 @@ func on_popup_added(text, duration):
 	pop_up.text_to_show = text
 	pop_up.show_time = duration
 	add_child(pop_up)
+
+func on_timer_timeout():
+	var root = get_tree().get_root()
+	root.get_node("Main").queue_free()
+	root.add_child(end_scene.instantiate())
