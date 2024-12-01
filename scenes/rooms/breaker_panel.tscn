@@ -2,170 +2,132 @@
 
 [ext_resource type="Script" path="res://scenes/rooms/breaker_panel.gd" id="1_q7eie"]
 [ext_resource type="Texture2D" uid="uid://cy4j3ycwpqowy" path="res://art/back_button.png" id="2_h0prn"]
-[ext_resource type="Texture2D" uid="uid://dr7juy3gtye5m" path="res://art/items/breaker_bg.png" id="3_e2x5l"]
-[ext_resource type="Texture2D" uid="uid://to0x2307e81j" path="res://art/items/breaker_switch_off.png" id="4_wn4qk"]
-[ext_resource type="Texture2D" uid="uid://bm4fyq5s2ennh" path="res://art/items/breaker_light_off.png" id="5_u2e3p"]
+[ext_resource type="Texture2D" uid="uid://dn5o6hktm77w" path="res://art/room_art/specialroom_breaker.png" id="2_k4h6o"]
+[ext_resource type="Texture2D" uid="uid://b7q7xqkjlstoi" path="res://art/room_art/switch_off.png" id="3_npq3s"]
+[ext_resource type="Texture2D" uid="uid://m5uyt5uqf6l7" path="res://art/room_art/light_off.png" id="4_2titv"]
 
 [node name="BreakerPanel" type="Node2D"]
 script = ExtResource("1_q7eie")
 
-[node name="ToGarage" type="TextureButton" parent="."]
-offset_left = 78.0
-offset_top = 63.0
-offset_right = 278.0
-offset_bottom = 263.0
+[node name="BreakerBackground" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("2_k4h6o")
+
+[node name="ToGarage" type="TextureButton" parent="BreakerBackground"]
+offset_left = 85.0
+offset_top = 56.0
+offset_right = 285.0
+offset_bottom = 256.0
 scale = Vector2(0.25, 0.25)
 texture_normal = ExtResource("2_h0prn")
 
-[node name="BreakerBackground" type="TextureRect" parent="."]
-offset_left = 255.0
-offset_top = 110.0
-offset_right = 855.0
-offset_bottom = 710.0
-texture = ExtResource("3_e2x5l")
-
 [node name="Switch_0" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 56.0
-offset_right = 205.0
-offset_bottom = 96.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 204.0
+offset_right = 495.0
+offset_bottom = 244.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Light_0" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 55.0
-offset_right = 406.0
-offset_bottom = 95.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 205.0
+offset_right = 695.0
+offset_bottom = 245.0
+texture = ExtResource("4_2titv")
 
 [node name="Switch_1" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 121.0
-offset_right = 204.0
-offset_bottom = 161.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 268.0
+offset_right = 495.0
+offset_bottom = 308.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Switch_2" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 191.0
-offset_right = 203.0
-offset_bottom = 231.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 343.0
+offset_right = 495.0
+offset_bottom = 383.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Switch_3" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 256.0
-offset_right = 202.0
-offset_bottom = 296.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 407.0
+offset_right = 495.0
+offset_bottom = 447.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Switch_4" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 320.0
-offset_right = 202.0
-offset_bottom = 360.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 476.0
+offset_right = 495.0
+offset_bottom = 516.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Switch_5" type="TextureButton" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 165.0
-offset_top = 390.0
-offset_right = 205.0
-offset_bottom = 430.0
-texture_normal = ExtResource("4_wn4qk")
-stretch_mode = 3
-
-[node name="Switch_6" type="TextureButton" parent="BreakerBackground"]
-layout_mode = 0
-offset_left = 168.0
-offset_top = 457.0
-offset_right = 208.0
-offset_bottom = 497.0
-texture_normal = ExtResource("4_wn4qk")
-stretch_mode = 3
-
-[node name="Switch_7" type="TextureButton" parent="BreakerBackground"]
-layout_mode = 0
-offset_left = 167.0
-offset_top = 524.0
-offset_right = 207.0
-offset_bottom = 564.0
-texture_normal = ExtResource("4_wn4qk")
+offset_left = 455.0
+offset_top = 550.0
+offset_right = 495.0
+offset_bottom = 590.0
+texture_normal = ExtResource("3_npq3s")
 stretch_mode = 3
 
 [node name="Light_1" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 365.0
-offset_top = 116.0
-offset_right = 405.0
-offset_bottom = 156.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 271.0
+offset_right = 695.0
+offset_bottom = 311.0
+texture = ExtResource("4_2titv")
 
 [node name="Light_2" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 181.0
-offset_right = 406.0
-offset_bottom = 221.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 333.0
+offset_right = 695.0
+offset_bottom = 373.0
+texture = ExtResource("4_2titv")
 
 [node name="Light_3" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 365.0
-offset_top = 252.0
-offset_right = 405.0
-offset_bottom = 292.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 398.0
+offset_right = 695.0
+offset_bottom = 438.0
+texture = ExtResource("4_2titv")
 
 [node name="Light_4" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 363.0
-offset_top = 316.0
-offset_right = 403.0
-offset_bottom = 356.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 466.0
+offset_right = 695.0
+offset_bottom = 506.0
+texture = ExtResource("4_2titv")
 
 [node name="Light_5" type="TextureRect" parent="BreakerBackground"]
 layout_mode = 0
-offset_left = 365.0
-offset_top = 385.0
-offset_right = 405.0
-offset_bottom = 425.0
-texture = ExtResource("5_u2e3p")
+offset_left = 655.0
+offset_top = 542.0
+offset_right = 695.0
+offset_bottom = 582.0
+texture = ExtResource("4_2titv")
 
-[node name="Light_6" type="TextureRect" parent="BreakerBackground"]
-layout_mode = 0
-offset_left = 364.0
-offset_top = 454.0
-offset_right = 404.0
-offset_bottom = 494.0
-texture = ExtResource("5_u2e3p")
-
-[node name="Light_7" type="TextureRect" parent="BreakerBackground"]
-layout_mode = 0
-offset_left = 366.0
-offset_top = 521.0
-offset_right = 406.0
-offset_bottom = 561.0
-texture = ExtResource("5_u2e3p")
-
-[connection signal="pressed" from="ToGarage" to="." method="_on_to_garage_pressed"]
+[connection signal="pressed" from="BreakerBackground/ToGarage" to="." method="_on_to_garage_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_0" to="." method="_on_switch_0_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_1" to="." method="_on_switch_1_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_2" to="." method="_on_switch_2_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_3" to="." method="_on_switch_3_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_4" to="." method="_on_switch_4_pressed"]
 [connection signal="pressed" from="BreakerBackground/Switch_5" to="." method="_on_switch_5_pressed"]
-[connection signal="pressed" from="BreakerBackground/Switch_6" to="." method="_on_switch_6_pressed"]
-[connection signal="pressed" from="BreakerBackground/Switch_7" to="." method="_on_switch_7_pressed"]

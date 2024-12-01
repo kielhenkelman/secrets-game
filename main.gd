@@ -13,6 +13,7 @@ var rooms = [
 	"Kitchen",
 	"BreakerPanel",
 	"CakeRecipe",
+	"CauldronRecipe",
 	"Observatory",
 	"Conservatory",
 	"Office",

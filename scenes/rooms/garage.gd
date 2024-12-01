@@ -14,4 +14,8 @@ func _process(delta: float) -> void:
 	pass
 
 func on_flag_updated(flag: String, value: Variant):
-	pass
+	if flag == "LIGHTS_FIXED":
+		var award = items["ELECTRICIAN_AWARD"]
+		award.set_always_highlight(true)
+		award.show_item()
+		# items["ELECTRICIAN_AWARD"].show_item()

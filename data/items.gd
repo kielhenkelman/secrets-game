@@ -4,6 +4,46 @@ const ClickableItem = preload("res://clickable_item.gd")
 
 var items = [
 	{
+		"NAME": "BREAKER",
+		"DISPLAY_NAME": "Breaker",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/breaker_panel.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/breaker_panel_GLOW.png"),
+		},
+		"SPAWN": {
+			"ROOM": "Garage"
+		},
+		"INSPECT_TEXT": "Unnecessarily complicated breaker panel.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Fix",
+				"SHOW_IF": func():
+					return true,
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room("BreakerPanel"),
+			}
+		]
+	},
+	{
+		"NAME": "ELECTRICIAN_AWARD",
+		"DISPLAY_NAME": "Worst Electrician Award",
+		"VALUE": 1000000,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/worst_electrician_award.png")
+		},
+		"SIZE": "1x2",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage",
+			"HIDDEN": true
+		},
+		"INSPECT_TEXT": "Shiny award for a distinguished engineer.",
+		"INTERACTIONS": []
+	},
+	{
 		"NAME": "BUCKET",
 		"DISPLAY_NAME": "Bucket",
 		"VALUE": 1,
@@ -18,7 +58,17 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Cellar"
 		},
-		"INSPECT_TEXT": "Looks like there could be something valueable inside.",
+		"INSPECT_TEXT": "Suitable as a helmet in a pinch.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "BUCKET_OF_WATER",
+		"DISPLAY_NAME": "Bucket of Water",
+		"VALUE": 1,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/bucket_of_water.png")
+		},
+		"SIZE": "1x2",
 		"INTERACTIONS": []
 	},
 	{
@@ -67,6 +117,14 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					GameState.drop_item("BOTTLE_OF_EXPENSIVE_WINE")
 					GameState.grab_item("EMPTY_BOTTLE"),
+			},
+			{
+				"LABEL": "Fill Bucket with Water",
+				"SHOW_IF": func():
+					return GameState.has_item("BUCKET"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("BUCKET")
+					GameState.grab_item("BUCKET_OF_WATER"),
 			}
 		]
 	},
@@ -411,6 +469,36 @@ var items = [
 		]
 	},
 	{
+		"NAME": "EMBEDDED_PEARL",
+		"DISPLAY_NAME": "Embedded Pearl",
+		"VALUE": 1000000,
+		"SIZE": "1x1",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/observatory/embedded_pearl.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/observatory/embedded_pearl_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/observatory/embedded_pearl_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/embedded_pearl.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Observatory"
+		},
+		"INSPECT_TEXT": "A beautiful pearl gemstone embedded in the telescope.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Hammer and Chisel",
+				"SHOW_IF": func():
+					return GameState.has_item("HAMMER_AND_CHISEL"),
+				"RESULT": func(item: ClickableItem):
+					if not GameState.can_fit_item("EMBEDDED_PEARL"):
+						GameState.popup_inventory_full()
+						return
+					item.hide_item()
+					GameState.grab_item("EMBEDDED_PEARL"),
+			}
+		]
+	},
+	{
 		"NAME": "EMBEDDED_GARNET",
 		"DISPLAY_NAME": "Embedded Garnet",
 		"VALUE": 1000000,
@@ -550,7 +638,7 @@ var items = [
 	{
 		"NAME": "SILVER_PLATES",
 		"DISPLAY_NAME": "Silver Plates",
-		"VALUE": 50000,
+		"VALUE": 100000,
 		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/silver_plates.png")
@@ -765,6 +853,15 @@ var items = [
 		}
 	},
 	{
+		"NAME": "TURQUOISE_PAINTED_GEM",
+		"DISPLAY_NAME": "Turquoise Gem",
+		"VALUE": 1000000,
+		"SIZE": "1x1",
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/turqoise_painted_gemstone.png")
+		}
+	},
+	{
 		"NAME": "TROUGH_OF_TURQUOISE_PAINT",
 		"TEXTURE": {
 			"HITBOX": preload("res://art/item_art_overlays/conservatory/trough_of_turquoise_paint.png"),
@@ -783,7 +880,63 @@ var items = [
 				"RESULT": func(item: ClickableItem):
 					GameState.drop_item("KNIFE")
 					GameState.grab_item("TURQUOISE_PAINTED_KNIFE"),
-			}
+			},
+			{
+				"LABEL": "Dip Great Diamond of Pigsylvania",
+				"SHOW_IF": func():
+					return GameState.has_item("GREAT_DIAMOND_OF_PIGSYLVANIA"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("GREAT_DIAMOND_OF_PIGSYLVANIA")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Opal",
+				"SHOW_IF": func():
+					return GameState.has_item("OPAL"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("OPAL")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Ruby",
+				"SHOW_IF": func():
+					return GameState.has_item("RUBY"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("RUBY")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Embedded Amethyst",
+				"SHOW_IF": func():
+					return GameState.has_item("EMBEDDED_AMETHYST"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("EMBEDDED_AMETHYST")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Embedded Garnet",
+				"SHOW_IF": func():
+					return GameState.has_item("EMBEDDED_GARNET"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("EMBEDDED_GARNET")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Embedded Pearl",
+				"SHOW_IF": func():
+					return GameState.has_item("EMBEDDED_PEARL"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("EMBEDDED_PEARL")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
+			{
+				"LABEL": "Dip Embedded Sapphire",
+				"SHOW_IF": func():
+					return GameState.has_item("EMBEDDED_SAPPHIRE"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("EMBEDDED_SAPPHIRE")
+					GameState.grab_item("TURQUOISE_PAINTED_GEM"),
+			},
 		]
 	},
 	{
@@ -1314,7 +1467,92 @@ var items = [
 		},
 		"INTERACTIONS": []
 	},
-	
+	{
+		"NAME": "CAULDRON_NOTE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/cellar/note.png"),
+			"GLOW": preload("res://art/item_art_overlays/cellar/note_GLOW.png"),
+		},
+		"SPAWN": {
+			"ROOM": "Cellar"
+		},
+		"INSPECT_TEXT": "An old note with an odd recipe.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('CauldronRecipe'),
+			},
+		]
+	},
+	{
+		"NAME": "BREAD",
+		"DISPLAY_NAME": "Bread",
+		"VALUE": 1,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/bread.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/kitchen/bread_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/bread_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/bread.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "A loaf of bread. Regular kind.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "TURQUOISE_GEM",
+		"DISPLAY_NAME": "Turquoise-Painted Gem",
+		"VALUE": 1000000,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/turqoise_painted_gemstone.png")
+		},
+		"SIZE": "1x1",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "DIAMOND_ORB",
+		"DISPLAY_NAME": "Diamond Orb",
+		"VALUE": 10000000,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/diamond_orb.png")
+		},
+		"SIZE": "1x1",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "CAULDRON",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/cellar/cauldron.png"),
+			"GLOW": preload("res://art/item_art_overlays/cellar/cauldron_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Cellar"
+		},
+		"INSPECT_TEXT": "A key attached to a chain. I can't remove it.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Perform Ritual",
+				"SHOW_IF": func():
+					return true,
+				"RESULT": func(item: ClickableItem):
+					if GameState.has_item("BREAD") \
+							and GameState.has_item("BUCKET_OF_WATER") \
+							and GameState.has_item("SILVER_SALT_SHAKER") \
+							and GameState.has_item("TURQUOISE_GEM"):
+						GameState.drop_item("BUCKET_OF_WATER")
+						GameState.drop_item("TURQUOISE_GEM")
+						GameState.grab_item("DIAMOND_ORB")
+					else:
+						GameState.popup("You're missing some ingridients."),
+			}
+		]
+	},
+
 	## DOORS ##
 	{
 		"NAME": "CELLAR_TO_GARAGE",

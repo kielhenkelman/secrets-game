@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=24 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
 [ext_resource type="PackedScene" uid="uid://dn6t2dnsuhjs2" path="res://scenes/hud/hud.tscn" id="2_6js6j"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dh5updeft7n05" path="res://scenes/rooms/attic.tscn" id="19_ent4l"]
 [ext_resource type="Script" path="res://scenes/rooms/attic.gd" id="20_ddra3"]
 [ext_resource type="PackedScene" uid="uid://branttvtk7oq8" path="res://scenes/rooms/diary.tscn" id="21_hj7mj"]
+[ext_resource type="PackedScene" uid="uid://c57gfwxbjnisk" path="res://scenes/rooms/cauldron_recipe.tscn" id="22_ph1oe"]
 [ext_resource type="PackedScene" uid="uid://damfovcb1hkin" path="res://scenes/rooms/telescope.tscn" id="22_px5q1"]
 
 [node name="Main" type="Node"]
@@ -90,5 +91,8 @@ metadata/telescope_id = 2
 [node name="TelescopeRight" parent="." instance=ExtResource("22_px5q1")]
 visible = false
 metadata/telescope_id = 1
+
+[node name="CauldronRecipe" parent="." instance=ExtResource("22_ph1oe")]
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
