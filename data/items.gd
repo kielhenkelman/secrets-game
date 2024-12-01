@@ -926,12 +926,12 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Bedroom"
 		},
-		"INSPECT_TEXT": "Looks like a diary.",
+		"INSPECT_TEXT": "Looks like a diary. It would be highly unethical to read this.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Read",
 				"RESULT": func(item: ClickableItem):
-					GameState.popup('"Arr matey. There be buried treasure under a conspicuous patch of dirt on the left side of the Conservatory, arr."', 10),
+					GameState.change_room('Diary'),
 			},
 		]
 	},
@@ -1058,6 +1058,159 @@ var items = [
 			"ROOM": "Attic"
 		},
 		"INSPECT_TEXT": "An antique rug.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "RECIPE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/recipe.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/recipe_GLOW.png")
+		},
+		"SIZE": "2x1",
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "Looks like a recipe. I should read it.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Read",
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room('CakeRecipe'),
+			},
+		]
+	},
+	{
+		"NAME": "WET_CLAY",
+		"DISPLAY_NAME": "Wet Clay",
+		"VALUE": 1,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/wet_clay.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/wet_clay_GLOW.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/conservatory/wet_clay_GONE.png"),
+			"ICON": preload("res://art/inventory_icons/soft_clay.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "Some wet clay.",
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "GREY_KEY",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/grey_key.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/grey_key_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "A key attached to a chain. I can't remove it.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Wet Clay",
+				"SHOW_IF": func():
+					return GameState.has_item("WET_CLAY"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("WET_CLAY")
+					GameState.grab_item("KEY_MOULD"),
+			}
+		]
+	},
+	{
+		"NAME": "KEY_MOULD",
+		"DISPLAY_NAME": "Key Mould",
+		"SIZE": "1x1",
+		"VALUE": 1,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/key_mould.png")
+		},
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "BAG_OF_CEMENT",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/bag_of_cement.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/bag_of_cement_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "A bag of quick-dry cement.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Key Mould",
+				"SHOW_IF": func():
+					return GameState.has_item("KEY_MOULD"),
+				"RESULT": func(item: ClickableItem):
+					GameState.drop_item("KEY_MOULD")
+					GameState.grab_item("CEMENT_KEY"),
+			}
+		]
+	},
+	{
+		"NAME": "CEMENT_KEY",
+		"DISPLAY_NAME": "Cement Key",
+		"SIZE": "1x1",
+		"VALUE": 1,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/cement_key.png")
+		},
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "GREY_SAFE",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/conservatory/grey_safe.png"),
+			"GLOW": preload("res://art/item_art_overlays/conservatory/grey_safe_GLOW.png")
+		},
+		"CAN_GRAB": false,
+		"SPAWN": {
+			"ROOM": "Conservatory"
+		},
+		"INSPECT_TEXT": "A safe. I wonder where the key is?",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Use Cement Key",
+				"SHOW_IF": func():
+					return GameState.has_item("CEMENT_KEY"),
+				"RESULT": func(item: ClickableItem):
+					item.clickable = false
+					GameState.drop_item("CEMENT_KEY")
+					GameState.grab_item("GREAT_DIAMOND_OF_PIGSYLVANIA"),
+			}
+		]
+	},
+	{
+		"NAME": "GREAT_DIAMOND_OF_PIGSYLVANIA",
+		"DISPLAY_NAME": "Great Diamond of Pigsylvania",
+		"SIZE": "1x1",
+		"VALUE": 10000000,
+		"TEXTURE": {
+			"ICON": preload("res://art/inventory_icons/great_diamond_of_pigsylvania.png")
+		},
+		"INTERACTIONS": []
+	},
+	{
+		"NAME": "SILVER_SALT_SHAKER",
+		"DISPLAY_NAME": "Silver Salt Shaker",
+		"VALUE": 10000,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker.png"),
+			"GLOW": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker_GLOW.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/kitchen/silver_salt_shaker_GONE.png"),
+			"ICON": preload("res://art/inventory_icons/silver_salt_shaker.png")
+		},
+		"SIZE": "1x1",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Kitchen"
+		},
+		"INSPECT_TEXT": "An unnecessarily expensive salt shaker.",
 		"INTERACTIONS": []
 	},
 	
