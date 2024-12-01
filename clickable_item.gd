@@ -38,8 +38,7 @@ func inspect_action(_self) -> void:
 	GameState.popup(game_item.inspect_text)
 
 func create_collision_polygon(collision_texture: Resource):
-	var image = Image.new()
-	image.load(collision_texture.resource_path)
+	var image = load(collision_texture.resource_path).get_image()
 	
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(image)
