@@ -7,16 +7,19 @@
 script = ExtResource("1_hru87")
 
 [node name="Button" type="Button" parent="."]
+z_index = 5
+custom_minimum_size = Vector2(150, 0)
 offset_left = 1071.0
 offset_top = 38.0
 offset_right = 1200.0
 offset_bottom = 69.0
+theme_override_font_sizes/font_size = 22
 text = "Inventory"
 
 [node name="Inventory" parent="." instance=ExtResource("4_d0xk5")]
-offset_left = 689.0
-offset_top = 45.0
-offset_right = 729.0
-offset_bottom = 85.0
+visible = false
+z_as_relative = false
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -5,6 +5,9 @@ var item_parts: Array
 var selected = false
 var slot_anchor_id: int
 
+var item_name: String
+var item_value: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -17,15 +20,17 @@ func _process(delta):
 func load_item(game_item: GameItem):
 	item_id = game_item.item_id
 	item_parts = game_item.item_parts
+	item_name = game_item.item_name
+	item_value = game_item.item_value
 	$Icon.texture = game_item.icon_texture
 		
 func snap_to_smooth(destination):
 	var tween = get_tree().create_tween()
-	destination += $Icon.size / 2 * 0.34
+	destination += $Icon.size / 2 * 0.69
 	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
 	selected = false
 
 func snap_to(destination):
-	destination += $Icon.size / 2 * 0.34
+	destination += $Icon.size / 2 * 0.69
 	self.global_position = destination
 	selected = false
