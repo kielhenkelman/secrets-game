@@ -4,6 +4,46 @@ const ClickableItem = preload("res://clickable_item.gd")
 
 var items = [
 	{
+		"NAME": "BREAKER",
+		"DISPLAY_NAME": "Breaker",
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/breaker_panel.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/breaker_panel_GLOW.png"),
+		},
+		"SPAWN": {
+			"ROOM": "Garage"
+		},
+		"INSPECT_TEXT": "Unnecessarily complicated breaker panel.",
+		"INTERACTIONS": [
+			{
+				"LABEL": "Fix",
+				"SHOW_IF": func():
+					return true,
+				"RESULT": func(item: ClickableItem):
+					GameState.change_room("BreakerPanel"),
+			}
+		]
+	},
+	{
+		"NAME": "ELECTRICIAN_AWARD",
+		"DISPLAY_NAME": "Worst Electrician Award",
+		"VALUE": 1000000,
+		"TEXTURE": {
+			"HITBOX": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award.png"),
+			"HIDDEN": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award_GONE.png"),
+			"GLOW": preload("res://art/item_art_overlays/garage/golden_worst_electrican_award_GLOW.png"),
+			"ICON": preload("res://art/inventory_icons/worst_electrician_award.png")
+		},
+		"SIZE": "1x2",
+		"CAN_GRAB": true,
+		"SPAWN": {
+			"ROOM": "Garage",
+			"HIDDEN": true
+		},
+		"INSPECT_TEXT": "Shiny award for a distinguished engineer.",
+		"INTERACTIONS": []
+	},
+	{
 		"NAME": "BUCKET",
 		"DISPLAY_NAME": "Bucket",
 		"VALUE": 1,
@@ -18,7 +58,7 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Cellar"
 		},
-		"INSPECT_TEXT": "Looks like there could be something valueable inside.",
+		"INSPECT_TEXT": "Suitable as a helmet in a pinch.",
 		"INTERACTIONS": []
 	},
 	{
@@ -598,7 +638,7 @@ var items = [
 	{
 		"NAME": "SILVER_PLATES",
 		"DISPLAY_NAME": "Silver Plates",
-		"VALUE": 50000,
+		"VALUE": 100000,
 		"SIZE": "1x1",
 		"TEXTURE": {
 			"ICON": preload("res://art/inventory_icons/silver_plates.png")

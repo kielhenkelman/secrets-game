@@ -87,6 +87,7 @@ texture_normal = ExtResource("4_wn4qk")
 stretch_mode = 3
 
 [node name="Switch_6" type="TextureButton" parent="BreakerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 168.0
 offset_top = 457.0
@@ -96,6 +97,7 @@ texture_normal = ExtResource("4_wn4qk")
 stretch_mode = 3
 
 [node name="Switch_7" type="TextureButton" parent="BreakerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 167.0
 offset_top = 524.0
@@ -145,6 +147,7 @@ offset_bottom = 425.0
 texture = ExtResource("5_u2e3p")
 
 [node name="Light_6" type="TextureRect" parent="BreakerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 364.0
 offset_top = 454.0
@@ -153,6 +156,7 @@ offset_bottom = 494.0
 texture = ExtResource("5_u2e3p")
 
 [node name="Light_7" type="TextureRect" parent="BreakerBackground"]
+visible = false
 layout_mode = 0
 offset_left = 366.0
 offset_top = 521.0

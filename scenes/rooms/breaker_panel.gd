@@ -15,7 +15,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-var switches = [false, false, false, false, false, false, false, false]
+var switches = [false, false, false, false, false, false]
 
 func flip(lights, indexes):
 	for i in indexes:
@@ -23,23 +23,19 @@ func flip(lights, indexes):
 	return lights
 	
 func apply_switches(switch_list):
-	var lights = [false, false, false, false, false, false, false, false]
+	var lights = [false, false, false, false, false, false]
 	if switch_list[0]:
-		lights = flip(lights, [0, 2])
+		lights = flip(lights, [5])
 	if switch_list[1]:
-		lights = flip(lights, [0, 1, 4, 7])
+		lights = flip(lights, [0, 1, 2])
 	if switch_list[2]:
-		lights = flip(lights, [3, 4])
+		lights = flip(lights, [0])
 	if switch_list[3]:
-		lights = flip(lights, [0, 1])
+		lights = flip(lights, [4])
 	if switch_list[4]:
-		lights = flip(lights, [1, 3, 7])
+		lights = flip(lights, [3, 4, 5])
 	if switch_list[5]:
-		lights = flip(lights, [1, 7])
-	if switch_list[6]:
-		lights = flip(lights, [2, 5, 6])
-	if switch_list[7]:
-		lights = flip(lights, [5, 6, 7])
+		lights = flip(lights, [1, 2, 5])
 	return lights
 
 func update_lights(lights):
@@ -49,8 +45,6 @@ func update_lights(lights):
 	$BreakerBackground/Light_3.texture = light_on if lights[3] else light_off
 	$BreakerBackground/Light_4.texture = light_on if lights[4] else light_off
 	$BreakerBackground/Light_5.texture = light_on if lights[5] else light_off
-	$BreakerBackground/Light_6.texture = light_on if lights[6] else light_off
-	$BreakerBackground/Light_7.texture = light_on if lights[7] else light_off
 	
 func update_breaker():
 	var lights = apply_switches(switches)
@@ -60,11 +54,10 @@ func update_breaker():
 	for l in lights:
 		if l == false:
 			return
+	GameState.set_flag("LIGHTS_FIXED")
 	GameState.popup("Lights are fixed")
 	await get_tree().create_timer(3.0).timeout
 	GameState.change_room("Garage")
-	
-	
 	
 func _on_to_garage_pressed() -> void:
 	GameState.change_room("Garage")
@@ -104,15 +97,4 @@ func _on_switch_5_pressed() -> void:
 	switches[5] = !switches[5]
 	$BreakerBackground/Switch_5.texture_normal = switch_on if switches[5] else switch_off
 	update_breaker()
-
-
-func _on_switch_6_pressed() -> void:
-	switches[6] = !switches[6]
-	$BreakerBackground/Switch_6.texture_normal = switch_on if switches[6] else switch_off
-	update_breaker()
-
-
-func _on_switch_7_pressed() -> void:
-	switches[7] = !switches[7]
-	$BreakerBackground/Switch_7.texture_normal = switch_on if switches[7] else switch_off
-	update_breaker()
+    
