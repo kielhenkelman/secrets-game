@@ -926,12 +926,12 @@ var items = [
 		"SPAWN": {
 			"ROOM": "Bedroom"
 		},
-		"INSPECT_TEXT": "Looks like a diary.",
+		"INSPECT_TEXT": "Looks like a diary. It would be highly unethical to read this.",
 		"INTERACTIONS": [
 			{
 				"LABEL": "Read",
 				"RESULT": func(item: ClickableItem):
-					GameState.popup('"Arr matey. There be buried treasure under a conspicuous patch of dirt on the left side of the Conservatory, arr."', 10),
+					GameState.change_room('Diary'),
 			},
 		]
 	},

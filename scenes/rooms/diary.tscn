@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://branttvtk7oq8"]
+
+[ext_resource type="Script" path="res://scenes/rooms/diary.gd" id="1_jyag6"]
+[ext_resource type="Texture2D" uid="uid://kalpo5ofqlhd" path="res://art/room_art/specialroom_diary.png" id="2_ukl2d"]
+[ext_resource type="Texture2D" uid="uid://cy4j3ycwpqowy" path="res://art/back_button.png" id="3_quoo6"]
+
+[node name="Diary" type="Node2D"]
+script = ExtResource("1_jyag6")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ukl2d")
+
+[node name="ToBedroom" type="TextureButton" parent="."]
+top_level = true
+offset_left = 78.0
+offset_top = 63.0
+offset_right = 278.0
+offset_bottom = 263.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("3_quoo6")
+stretch_mode = 0
+
+[connection signal="pressed" from="ToBedroom" to="." method="_on_to_bedroom_pressed"]
