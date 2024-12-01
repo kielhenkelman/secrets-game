@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dfdeglj5so00j"]
+[gd_scene load_steps=23 format=3 uid="uid://dfdeglj5so00j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kyrq5"]
 [ext_resource type="PackedScene" uid="uid://dn6t2dnsuhjs2" path="res://scenes/hud/hud.tscn" id="2_6js6j"]
@@ -10,17 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://dlmy3q0tw8aa4" path="res://popup.tscn" id="8_jjik4"]
 [ext_resource type="PackedScene" uid="uid://bcjkja5m5dm7c" path="res://scenes/rooms/breaker_panel.tscn" id="9_vuhxj"]
 [ext_resource type="PackedScene" uid="uid://ckaodkv3ivsoo" path="res://scenes/rooms/cake_recipe.tscn" id="10_6pjm8"]
-[ext_resource type="PackedScene" uid="uid://blqnbunub3ckh" path="res://scenes/rooms/observatory.tscn" id="11_ujyxr"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/observatory.tscn" id="11_ujyxr"]
 [ext_resource type="Script" path="res://scenes/rooms/observatory.gd" id="12_tevyc"]
-[ext_resource type="PackedScene" uid="uid://ijiqa2sh64ns" path="res://scenes/rooms/conservatory.tscn" id="13_djp82"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/conservatory.tscn" id="13_djp82"]
 [ext_resource type="Script" path="res://scenes/rooms/conservatory.gd" id="14_ak4uc"]
-[ext_resource type="PackedScene" uid="uid://chm2frgrrmonb" path="res://scenes/rooms/office.tscn" id="15_7acx0"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/office.tscn" id="15_7acx0"]
 [ext_resource type="Script" path="res://scenes/rooms/office.gd" id="16_qrm3x"]
-[ext_resource type="PackedScene" uid="uid://bh73wijeb70db" path="res://scenes/rooms/bedroom.tscn" id="17_28djk"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/bedroom.tscn" id="17_28djk"]
 [ext_resource type="Script" path="res://scenes/rooms/bedroom.gd" id="18_vsgud"]
-[ext_resource type="PackedScene" uid="uid://dh5updeft7n05" path="res://scenes/rooms/attic.tscn" id="19_ent4l"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/attic.tscn" id="19_ent4l"]
 [ext_resource type="Script" path="res://scenes/rooms/attic.gd" id="20_ddra3"]
-[ext_resource type="PackedScene" uid="uid://branttvtk7oq8" path="res://scenes/rooms/diary.tscn" id="21_hj7mj"]
+[ext_resource type="PackedScene" path="res://scenes/rooms/diary.tscn" id="21_hj7mj"]
+[ext_resource type="PackedScene" uid="uid://c57gfwxbjnisk" path="res://scenes/rooms/cauldron_recipe.tscn" id="22_ph1oe"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_kyrq5")
@@ -80,6 +81,9 @@ visible = false
 script = ExtResource("20_ddra3")
 
 [node name="Diary" parent="." instance=ExtResource("21_hj7mj")]
+visible = false
+
+[node name="CauldronRecipe" parent="." instance=ExtResource("22_ph1oe")]
 visible = false
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
